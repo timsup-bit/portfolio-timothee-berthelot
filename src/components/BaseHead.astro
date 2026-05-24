@@ -1,5 +1,9 @@
 ---
 import "../styles/global.css";
+
+const siteUrl = "https://colletdigital.com";
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = new URL("/apple-touch-icon.png", siteUrl).toString();
 ---
 
 <meta charset="UTF-8" />
@@ -30,32 +34,27 @@ import "../styles/global.css";
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://github.com/timsup-bit" />
+<meta property="og:url" content={canonical} />
 <meta property="og:title" content="Timothée Berthelot - Développeur iOS & Étudiant BTS SIO" />
 <meta
   property="og:description"
   content="Portfolio de Timothée Berthelot, étudiant en BTS SIO SLAM spécialisé en développement iOS. Passionné de cybersécurité et futur pentester."
 />
-<meta
-  property="og:image"
-  content="/apple-touch-icon.png"
-/>
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="fr_FR" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://github.com/timsup-bit" />
+<meta property="twitter:url" content={canonical} />
 <meta property="twitter:title" content="Timothée Berthelot - Développeur iOS & Étudiant BTS SIO" />
 <meta
   property="twitter:description"
   content="Portfolio de Timothée Berthelot, étudiant en BTS SIO SLAM spécialisé en développement iOS. Passionné de cybersécurité et futur pentester."
 />
-<meta
-  property="twitter:image"
-  content="/apple-touch-icon.png"
-/>
+<meta property="twitter:image" content={ogImage} />
 
 <!-- Canonical URL -->
-<link rel="canonical" href="https://github.com/timsup-bit" />
+<link rel="canonical" href={canonical} />
 
 <!-- Additional SEO -->
 <meta name="robots" content="index, follow" />
