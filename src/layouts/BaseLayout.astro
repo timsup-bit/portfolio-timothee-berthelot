@@ -2,19 +2,11 @@
 import BaseHead from "../components/BaseHead.astro";
 ---
 
-<html lang="fr" class="selection:bg-secondary selection:text-secondary">
+<html lang="fr">
   <head>
     <BaseHead />
   </head>
-
-  <body class="bg-primary">
+  <body>
     <slot />
-    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"
-    ></script>
-    <script type="text/javascript">
-      AOS.init({
-        once: true, // animation will happen only once
-      });
-    </script>
   </body>
 </html>
