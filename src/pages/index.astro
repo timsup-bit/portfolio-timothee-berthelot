@@ -311,6 +311,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <h2 class="title">J'ai payé mes études avec mes mains</h2>
       <p class="lede">Cinq années de travail, menées pour partie en parallèle des études. Le bâtiment d'abord, le développement ensuite.</p>
 
+      <p class="scroll-note mono">Faites glisser le tableau &rarr;</p>
       <div class="scroll-x">
         <table class="ledger">
           <thead>
@@ -335,6 +336,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <h2 class="title">Ce que j'ai obtenu, et ce que je repasse</h2>
       <p class="lede">Statut exact de chaque ligne. Rien d'annoncé comme acquis qui ne le soit pas.</p>
 
+      <p class="scroll-note mono">Faites glisser le tableau &rarr;</p>
       <div class="scroll-x">
         <table class="ledger">
           <thead>
@@ -390,6 +392,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <h2 class="title">Ce que je fais d'ici 2028</h2>
       <p class="lede">Un plan daté vaut mieux qu'une déclaration d'intention. Voici le mien, tenu à jour.</p>
 
+      <p class="scroll-note mono">Faites glisser le tableau &rarr;</p>
       <div class="scroll-x">
         <table class="ledger">
           <thead>
@@ -424,6 +427,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <p>Le problème se durcit dès que le modèle est outillé : accès à une base, à un navigateur, à une messagerie. L'exécution d'une instruction hostile cesse d'être une curiosité et devient une exfiltration. C'est le terrain que je veux apprendre à défendre, parce qu'il est neuf, parce qu'il n'a pas encore ses réflexes, et parce que les systèmes concernés se déploient plus vite qu'ils ne se sécurisent.</p>
 
       <figure class="schema">
+        <div class="piste">
         <svg viewBox="0 0 960 272" role="img"
              aria-label="Une consigne légitime de l'utilisateur et des instructions dissimulées dans un contenu récupéré arrivent sur le même canal dans le contexte du modèle. Le modèle appelle alors un outil, qui exfiltre une donnée privée vers un tiers.">
           <defs>
@@ -480,9 +484,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <text x="440" y="248" fill="currentColor" opacity=".72" text-anchor="middle">Aucune fronti&#232;re&#160;: les deux entrent par le m&#234;me canal.</text>
           </g>
         </svg>
+        </div>
+        <p class="piste-note mono">Faites glisser le schéma &rarr;</p>
         <figcaption>Le chemin d&rsquo;une injection de prompt indirecte. Une requête SQL s&rsquo;échappe parce que la commande et la donnée circulent séparément&nbsp;; ici elles partagent le même canal, et c&rsquo;est ce qui rend la parade difficile.</figcaption>
       </figure>
 
+      <p class="scroll-note mono">Faites glisser le tableau &rarr;</p>
       <div class="scroll-x">
         <table class="ledger">
           <caption class="mono">Chantiers que je compte ouvrir</caption>
@@ -1063,6 +1070,31 @@ p:last-child { margin-bottom: 0; }
   overflow: visible;
 }
 
+/* Sous 860 px, le schéma réduit mettrait son texte à quatre pixels.
+   Il défile donc horizontalement à une largeur où il reste lisible,
+   comme les tableaux. La légende, elle, reste dans la colonne. */
+.schema .piste { overflow-x: auto; overscroll-behavior-x: contain; }
+
+@media (max-width: 860px) {
+  .schema .piste svg { min-width: 840px; }
+}
+
+.piste-note {
+  display: none;
+  margin: 8px 0 0;
+  color: var(--ink-38);
+}
+
+@media (max-width: 860px) {
+  .piste-note, .scroll-note { display: block; }
+}
+
+.scroll-note {
+  display: none;
+  margin: 8px 0 0;
+  color: var(--ink-38);
+}
+
 .schema figcaption {
   margin: 16px 0 0;
   max-width: 62ch;
@@ -1256,6 +1288,11 @@ p:last-child { margin-bottom: 0; }
   transition: border-color .16s ease, color .16s ease;
 }
 .theme-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+@media (max-width: 860px) {
+  /* Cible tactile confortable : 5 px de haut ne s'atteint pas au doigt. */
+  .theme-btn { padding: 10px 15px; }
+}
 
 /* ── Fluidité ─────────────────────────────────────────────────────
    Dérive des textures pilotée par le défilement : l'animation est portée
