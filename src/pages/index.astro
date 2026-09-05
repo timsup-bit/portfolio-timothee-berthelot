@@ -1,16 +1,1021 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/landing/Hero.astro";
-import Intro from "../components/landing/Intro.astro";
-import Projects from "../components/landing/Projects.astro";
-import Testimonials from "../components/landing/Testimonials.astro";
-import FeaturedWork from "../components/landing/FeaturedWork.astro";
 ---
 
 <BaseLayout>
-  <Hero />
-  <Intro />
-  <Projects />
-  <Testimonials />
-  <FeaturedWork />
+<a class="skip" href="#parcours">Aller au contenu</a>
+
+<main class="sheet">
+
+  <!-- ══ Nameplate ══════════════════════════════════════════════ -->
+  <header class="masthead">
+    <div class="masthead-top mono">
+      <span>Portfolio — Montreuil, France</span>
+      <button class="theme-btn" id="theme" type="button" aria-label="Changer de thème">Thème</button>
+    </div>
+
+    <h1 class="nameplate"><span>Timothée</span><span>Collet</span><span class="n3">Berthelot</span></h1>
+
+    <div class="standfirst">
+      <p class="role">Développeur logiciel. Spécialisation cybersécurité en cours à Epitech.</p>
+      <dl class="ident">
+        <div><dt class="mono">Formation</dt><dd>Epitech — Bachelor, spécialisation cybersécurité</dd></div>
+        <div><dt class="mono">En cours</dt><dd>BTS SIO option SLAM &mdash; session 2027</dd></div>
+        <div><dt class="mono">Diplômes</dt><dd>CAP Peintre en bâtiment, mention bien &middot; Baccalauréat technologique</dd></div>
+        <div><dt class="mono">Statut</dt><dd>Micro-entrepreneur — prestations facturées</dd></div>
+        <div><dt class="mono">Recherche</dt><dd>Alternance en cybersécurité, rentrée 2027</dd></div>
+        <div><dt class="mono">Objectif</dt><dd>Master en intelligence artificielle — sécurité des modèles</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <!-- ══ Parcours ═══════════════════════════════════════════════ -->
+  <section class="band row" id="parcours">
+    <div class="rail-label mono"><span class="rail-num">01</span><span>Parcours</span></div>
+    <div>
+      <h2 class="title">Ce qui commence maintenant</h2>
+      <p class="lede">Septembre 2026&nbsp;: j'entre en deuxième année à Epitech, en spécialisation cybersécurité. Je traite cette date comme un début, pas comme la suite de quelque chose.</p>
+      <p>Avant, il y a eu le bâtiment. On y apprend une règle qui ne se théorise pas&nbsp;: une procédure de sécurité négligée ne met pas en danger celui qui la néglige, elle met en danger toute l'équipe. J'ai obtenu ce CAP avec mention, puis j'ai repris mes études en informatique sans cesser de travailler — les marchés, la restauration, les chantiers.</p>
+      <p>J'ai préparé un BTS SIO option SLAM au CNED, à distance et en parallèle d'un emploi&nbsp;; je ne l'ai pas obtenu à la session 2026 et je me représente à la session 2027. En parallèle, j'ai construit et livré des applications complètes — iOS natif, web full-stack, IoT — en micro-entreprise et pour des projets académiques.</p>
+      <p>Ce que je cherche maintenant&nbsp;: une alternance où la sécurité n'est pas une couche ajoutée à la fin, mais la contrainte de départ. Je sais concevoir, développer et livrer. J'apprends désormais à casser, pour savoir défendre.</p>
+
+      <div class="tryp">
+        <div class="tryp-col">
+          <span class="mono tryp-when">2021 – 2026 &middot; Passé</span>
+          <h3 class="tryp-tense">L'élan</h3>
+          <p class="tryp-lead">Le bâtiment, les marchés, la restauration. Cinq années de travail qui ont financé les études.</p>
+          <ul class="tryp-list">
+            <li>CAP Peintre en bâtiment, mention bien</li>
+            <li>Un an sur les chantiers, en équipe</li>
+            <li>Deux ans sur les marchés parisiens</li>
+            <li>La sécurité apprise comme une discipline collective</li>
+          </ul>
+        </div>
+
+        <div class="tryp-col" data-now>
+          <span class="mono tryp-when">Depuis septembre 2026 &middot; Présent</span>
+          <h3 class="tryp-tense">La ligne de départ</h3>
+          <p class="tryp-lead">Deuxième année à Epitech, spécialisation cybersécurité. Tout ce qui suit part d'ici.</p>
+          <ul class="tryp-list">
+            <li>Epitech — Bachelor 2, spécialisation cybersécurité</li>
+            <li>BTS SIO présenté à la session 2027</li>
+            <li>Micro-entreprise&nbsp;: je conçois, je livre, je facture</li>
+            <li>Laboratoire personnel en construction</li>
+          </ul>
+        </div>
+
+        <div class="tryp-col">
+          <span class="mono tryp-when">2027 – 2029 &middot; Futur</span>
+          <h3 class="tryp-tense">Le cap</h3>
+          <p class="tryp-lead">Une alternance en cybersécurité, puis un master en intelligence artificielle tourné vers la sécurité des modèles.</p>
+          <ul class="tryp-list">
+            <li>Alternance en cybersécurité, rentrée 2027</li>
+            <li>CompTIA Security+ et pratique offensive</li>
+            <li>Master en intelligence artificielle</li>
+            <li>Instrumentation sportive&nbsp;: vélo, natation, course</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Registre des projets ═══════════════════════════════════ -->
+  <section class="band row" id="projets">
+    <div class="rail-label mono"><span class="rail-num">02</span><span>Registre</span><span class="rail-num">9 entrées</span></div>
+    <div>
+      <h2 class="title">Registre des projets</h2>
+      <p class="lede">Six projets menés entre 2024 et 2026, et trois que j'ouvre ensuite autour de l'instrumentation sportive. Chaque entrée précise l'état réel, la pile technique et ce qui est consultable — ou ne l'est pas. Les projets annoncés sont marqués comme tels.</p>
+
+      <div class="register">
+
+        <details class="entry" open>
+          <summary class="entry-head">
+            <span class="entry-num mono">01</span>
+            <span class="entry-name">Mon Mental</span>
+            <span class="state mono" data-s="wip"><span class="dot"></span>En cours</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Application iOS mettant en relation psychologues et patients par appels audio et vidéo, avec un suivi du bien-être au quotidien. Un domaine où la donnée traitée est, par nature, parmi les plus sensibles qui soient : l'échange entre un patient et son praticien.</p>
+              <div class="tags"><span class="tag">iOS natif</span><span class="tag">Swift</span><span class="tag">Audio / Vidéo</span><span class="tag">Données de santé</span></div>
+              <div class="links"><a href="https://github.com/timsup777/-mon-mentale" target="_blank" rel="noopener noreferrer">Dépôt GitHub ↗</a></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">02</span>
+            <span class="entry-name">Trouvaille</span>
+            <span class="state mono" data-s="wip"><span class="dot"></span>En cours</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Application et site de mise en relation, menés de bout en bout : modélisation des données, API backend en Node.js, interface React, mise en production sur un sous-domaine dédié.</p>
+              <div class="tags"><span class="tag">Node.js</span><span class="tag">React</span><span class="tag">API REST</span><span class="tag">Full-stack</span></div>
+              <div class="links">
+                <a href="https://github.com/timsup777/trouvaille-backend" target="_blank" rel="noopener noreferrer">Dépôt backend ↗</a>
+                <a href="https://trouvaille.colletdigital.com" target="_blank" rel="noopener noreferrer">Site en ligne ↗</a>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">03</span>
+            <span class="entry-name">Zéro Trace</span>
+            <span class="state mono" data-s="wip"><span class="dot"></span>En développement</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Jeu vidéo d'ambiance cyberpunk construit autour d'un sujet sérieux : l'anonymat numérique et les traces que l'on laisse derrière soi. Le joueur y manipule les notions d'empreinte, d'exposition et de protection des données — un support de sensibilisation autant qu'un jeu.</p>
+              <div class="tags"><span class="tag">Next.js</span><span class="tag">Game design</span><span class="tag">Traces numériques</span><span class="tag">Sensibilisation</span></div>
+              <div class="links"><span class="closed">Dépôt privé</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">04</span>
+            <span class="entry-name">Bracelet connecté</span>
+            <span class="state mono" data-s="done"><span class="dot"></span>Académique</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Projet IoT mené en BTS SIO : un bracelet remontant des mesures en temps réel vers une application mobile. Chaîne complète capteur → transmission → application, et première confrontation concrète aux questions de fiabilité et d'intégrité d'une donnée en transit.</p>
+              <div class="tags"><span class="tag">IoT</span><span class="tag">Capteurs</span><span class="tag">Mobile</span><span class="tag">BTS SIO</span></div>
+              <div class="links"><span class="closed">Dépôt privé</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">05</span>
+            <span class="entry-name">Activités Jeunesse</span>
+            <span class="state mono" data-s="done"><span class="dot"></span>Terminé</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Application web de gestion et d'organisation d'activités pour la jeunesse : inscription, mise en relation, planification d'événements. Architecture React côté client, Node.js côté serveur.</p>
+              <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Full-stack</span></div>
+              <div class="links"><a href="https://github.com/timsup777/activites-jeunesse" target="_blank" rel="noopener noreferrer">Dépôt GitHub ↗</a></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">06</span>
+            <span class="entry-name">Affûteurs à Vélo</span>
+            <span class="state mono" data-s="live"><span class="dot"></span>Livré</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Site pour une association d'affûtage à domicile en vélo. Commande simple, contrainte réelle : rester accessible et lisible pour un public non technique, sans dépendance inutile.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Associatif</span></div>
+              <div class="links"><a href="https://github.com/timsup777/AFT" target="_blank" rel="noopener noreferrer">Dépôt GitHub ↗</a></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">07</span>
+            <span class="entry-name">Compteur vélo</span>
+            <span class="state mono" data-s="plan"><span class="dot"></span>Planifié</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Ordinateur de bord pour vélo : vitesse et cadence mesurées au capteur, position, enregistrement des sorties, affichage embarqué. Suite directe du bracelet connecté mené en BTS, avec trois contraintes en plus — fonctionner sous la pluie, sans réseau, et tenir sur batterie.</p>
+              <div class="tags"><span class="tag">Embarqué</span><span class="tag">Capteurs</span><span class="tag">GPS</span><span class="tag">Autonomie</span></div>
+              <div class="links"><span class="closed">Projet à venir</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">08</span>
+            <span class="entry-name">Suivi de natation</span>
+            <span class="state mono" data-s="plan"><span class="dot"></span>Planifié</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Capteur porté au poignet en bassin : compter les longueurs et détecter les virages à partir du seul accéléromètre, puisque sous l'eau il n'y a ni satellite ni réseau. Le problème est entièrement un problème de traitement du signal — reconnaître un geste répété dans un flux bruité, sans référence extérieure.</p>
+              <div class="tags"><span class="tag">Embarqué</span><span class="tag">Accéléromètre</span><span class="tag">Traitement du signal</span><span class="tag">Étanchéité</span></div>
+              <div class="links"><span class="closed">Projet à venir</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">09</span>
+            <span class="entry-name">Analyse de foulée</span>
+            <span class="state mono" data-s="plan"><span class="dot"></span>Planifié</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Course à pied : mesurer ce qu'une montre grand public ne donne pas — cadence réelle, temps de contact au sol, symétrie entre l'appui gauche et l'appui droit. Un capteur inertiel à la ceinture, et tout le travail se joue ensuite dans l'extraction des appuis à partir d'un signal accélérométrique bruité.</p>
+              <div class="tags"><span class="tag">Embarqué</span><span class="tag">Centrale inertielle</span><span class="tag">Traitement du signal</span><span class="tag">Biomécanique</span></div>
+              <div class="links"><span class="closed">Projet à venir</span></div>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Compétences ════════════════════════════════════════════ -->
+  <section class="band row" id="competences">
+    <div class="rail-label mono"><span class="rail-num">03</span><span>Compétences</span></div>
+    <div>
+      <h2 class="title">Ce que je sais faire, et où j'en suis</h2>
+      <p class="lede">Déclaré au niveau réel. Ce qui est en cours d'acquisition est indiqué comme tel.</p>
+
+      <div class="spec">
+        <div class="spec-block">
+          <h3>Développement mobile</h3>
+          <div>
+            <p>Applications iOS natives, du cycle de vie de l'application aux appels audio et vidéo. Ma spécialité technique la plus aboutie.</p>
+            <div class="tags"><span class="tag">Swift</span><span class="tag">SwiftUI</span><span class="tag">UIKit</span><span class="tag">Xcode</span></div>
+          </div>
+        </div>
+
+        <div class="spec-block">
+          <h3>Web &amp; backend</h3>
+          <div>
+            <p>Applications full-stack et API REST : modélisation, endpoints, authentification, mise en production.</p>
+            <div class="tags"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">PHP</span><span class="tag">HTML / CSS</span></div>
+          </div>
+        </div>
+
+        <div class="spec-block">
+          <h3>Données</h3>
+          <div>
+            <p>Conception de schémas relationnels, écriture et optimisation de requêtes.</p>
+            <div class="tags"><span class="tag">SQL</span><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Modélisation</span></div>
+          </div>
+        </div>
+
+        <div class="spec-block">
+          <h3>Systèmes &amp; outillage</h3>
+          <div>
+            <p>Environnements Linux, conteneurisation, gestion de versions et travail en équipe projet.</p>
+            <div class="tags"><span class="tag">Linux</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">Python</span><span class="tag">Agile</span></div>
+          </div>
+        </div>
+
+        <div class="spec-block">
+          <h3>Cybersécurité</h3>
+          <div>
+            <p>En cours de formation. Spécialisation engagée à Epitech depuis la rentrée 2026 ; pratique offensive et défensive en construction, documentée au fil de son acquisition. Je préfère l'annoncer ainsi plutôt que de revendiquer un niveau que je n'ai pas encore.</p>
+            <div class="tags"><span class="tag">En formation</span><span class="tag">Sécurité applicative</span><span class="tag">Réseaux</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Expérience ═════════════════════════════════════════════ -->
+  <section class="band row" id="experience">
+    <div class="rail-label mono"><span class="rail-num">04</span><span>Expérience</span></div>
+    <div>
+      <h2 class="title">Parcours professionnel</h2>
+      <p class="lede">Cinq années de travail, menées pour partie en parallèle des études. Le bâtiment d'abord, le développement ensuite.</p>
+
+      <div class="scroll-x">
+        <table class="ledger">
+          <thead>
+            <tr><th scope="col">Période</th><th scope="col">Poste</th><th scope="col">Structure</th><th scope="col">Durée</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="yr">en activité</td><td class="it">Développeur indépendant</td><td class="note">Micro-entreprise &mdash; prestations facturées</td><td class="note">&mdash;</td></tr>
+            <tr><td class="yr">06.2025 – 09.2025</td><td class="it">Collaborateur, secteur du bâtiment</td><td class="note">SASU Voltaire, Paris</td><td class="note">4 mois</td></tr>
+            <tr><td class="yr">09.2023 – 08.2024</td><td class="it">Peintre en bâtiment</td><td class="note">Bechet, Paris</td><td class="note">1 an</td></tr>
+            <tr><td class="yr">01.2023 – 07.2023</td><td class="it">Serveur polyvalent</td><td class="note">Les Carnivores, Paris</td><td class="note">7 mois</td></tr>
+            <tr><td class="yr">01.2021 – 12.2022</td><td class="it">Vendeur &mdash; fruits et légumes, puis fromagerie</td><td class="note">Marchés de Bastille et de Saint-Quentin, Paris</td><td class="note">2 ans</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Formation ══════════════════════════════════════════════ -->
+  <section class="band row" id="formation">
+    <div class="rail-label mono"><span class="rail-num">05</span><span>Formation</span></div>
+    <div>
+      <h2 class="title">Formation &amp; certifications</h2>
+      <p class="lede">Statut exact de chaque ligne. Rien d'annoncé comme acquis qui ne le soit pas.</p>
+
+      <div class="scroll-x">
+        <table class="ledger">
+          <thead>
+            <tr><th scope="col">Période</th><th scope="col">Intitulé</th><th scope="col">État</th><th scope="col">Précision</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="yr">2026 —</td>
+              <td class="it">Epitech — Bachelor, spécialisation cybersécurité</td>
+              <td><span class="status" data-s="wip">En cours</span></td>
+              <td class="note">Entrée en admission parallèle après le BTS</td>
+            </tr>
+            <tr>
+              <td class="yr">2024 – 2026</td>
+              <td class="it">BTS SIO option SLAM &mdash; CNED</td>
+              <td><span class="status" data-s="wip">Session 2027</span></td>
+              <td class="note">Préparé à distance, en parallèle d'un emploi. Diplôme non obtenu à la session 2026&nbsp;; nouvelle présentation à la session 2027</td>
+            </tr>
+            <tr>
+              <td class="yr">2026</td>
+              <td class="it">TOEIC</td>
+              <td><span class="status" data-s="wip">Programmé</span></td>
+              <td class="note">Examen prévu en fin d'année</td>
+            </tr>
+            <tr>
+              <td class="yr">2023 – 2024</td>
+              <td class="it">CAP Peintre en bâtiment &mdash; Éco campus du bâtiment</td>
+              <td><span class="status" data-s="ok">Obtenu</span></td>
+              <td class="note">Vitry-sur-Seine &middot; Mention bien</td>
+            </tr>
+            <tr>
+              <td class="yr">2019 – 2022</td>
+              <td class="it">Baccalauréat technologique &mdash; Lycée polyvalent Le Rebours</td>
+              <td><span class="status" data-s="ok">Obtenu</span></td>
+              <td class="note">Paris 13<sup>e</sup></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Feuille de route ═══════════════════════════════════════ -->
+  <section class="band row" id="trajectoire">
+    <div class="rail-label mono"><span class="rail-num">06</span><span>Trajectoire</span></div>
+    <div>
+      <h2 class="title">Feuille de route</h2>
+      <p class="lede">Un plan daté vaut mieux qu'une déclaration d'intention. Voici le mien, tenu à jour.</p>
+
+      <div class="scroll-x">
+        <table class="ledger">
+          <thead>
+            <tr><th scope="col">Échéance</th><th scope="col">Objectif</th><th scope="col">Nature</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="yr">2026 · T4</td><td class="it">TOEIC — certification du niveau d'anglais</td><td class="note">Certification</td></tr>
+            <tr><td class="yr">2026 · T4</td><td class="it">Laboratoire personnel : réseau segmenté, machines virtuelles, journalisation</td><td class="note">Pratique</td></tr>
+            <tr><td class="yr">2026 · T4</td><td class="it">Audit de ma propre empreinte numérique : reconnaissance en sources ouvertes, fermeture des comptes dormants, demandes d'effacement au titre du RGPD</td><td class="note">Pratique</td></tr>
+            <tr><td class="yr">2027 · T1</td><td class="it">Pratique offensive régulière sur plateformes d'entraînement</td><td class="note">Pratique</td></tr>
+            <tr><td class="yr">2027 · T1</td><td class="it">CompTIA Security+ &mdash; préparation puis examen</td><td class="note">Certification</td></tr>
+            <tr><td class="yr">2027 · T2</td><td class="it">BTS SIO option SLAM &mdash; nouvelle présentation, session 2027</td><td class="note">Diplôme</td></tr>
+            <tr><td class="yr">2027 · T3</td><td class="it">Entrée en alternance, troisième année de Bachelor</td><td class="note">Cursus</td></tr>
+            <tr><td class="yr">2027</td><td class="it">Banc d'essai sur l'injection de prompt indirecte, documenté publiquement</td><td class="note">Pratique</td></tr>
+            <tr><td class="yr">2027</td><td class="it">Compteur vélo et suivi de natation : électronique embarquée et traitement du signal</td><td class="note">Projets personnels</td></tr>
+            <tr><td class="yr">2028</td><td class="it">Master en intelligence artificielle, orienté sécurité des modèles</td><td class="note">Cursus</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Axe de travail ═════════════════════════════════════════ -->
+  <section class="band row" id="axe">
+    <div class="rail-label mono"><span class="rail-num">07</span><span>Axe de travail</span></div>
+    <div>
+      <h2 class="title">Sécurité des systèmes d'intelligence artificielle</h2>
+      <p class="lede">Je vise un master en intelligence artificielle. Non pour construire un modèle de plus, mais pour travailler sur ce qui se passe quand on l'attaque.</p>
+
+      <p>Un modèle de langage ne distingue pas nettement ses instructions des données qu'on lui donne à lire. Cette frontière absente est une surface d'attaque : un contenu récupéré sur le web, un document déposé par un utilisateur, un message dans une boîte de réception peuvent porter des instructions que le système exécutera comme si elles venaient de son propriétaire. C'est l'injection de prompt indirecte, et elle n'a pas d'équivalent propre dans la sécurité applicative classique — on ne l'échappe pas comme on échappe une requête SQL.</p>
+
+      <p>Le problème se durcit dès que le modèle est outillé : accès à une base, à un navigateur, à une messagerie. L'exécution d'une instruction hostile cesse d'être une curiosité et devient une exfiltration. C'est le terrain que je veux apprendre à défendre, parce qu'il est neuf, parce qu'il n'a pas encore ses réflexes, et parce que les systèmes concernés se déploient plus vite qu'ils ne se sécurisent.</p>
+
+      <div class="scroll-x">
+        <table class="ledger">
+          <caption class="mono">Chantiers que je compte ouvrir</caption>
+          <thead>
+            <tr><th scope="col">Sujet</th><th scope="col">Ce que je veux démontrer</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="it">Injection de prompt indirecte</td><td class="note">Monter un banc d'essai où un document anodin détourne un assistant outillé, puis mesurer ce qui l'arrête réellement</td></tr>
+            <tr><td class="it">Exfiltration par les outils</td><td class="note">Suivre le chemin d'une donnée sensible depuis le contexte du modèle jusqu'à sa sortie, et le couper</td></tr>
+            <tr><td class="it">Empoisonnement des données</td><td class="note">Comprendre ce qu'un jeu d'entraînement corrompu produit en aval, et à quel coût il se détecte</td></tr>
+            <tr><td class="it">Cloisonnement et moindre privilège</td><td class="note">Appliquer aux agents les principes d'architecture que la sécurité des systèmes connaît déjà</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Ma formation actuelle est le développement ; c'est un point de départ utile, parce que ces attaques visent des applications avant de viser des modèles. Le reste est à acquérir, et je le dis comme tel.</p>
+    </div>
+  </section>
+
+  <!-- ══ Contact ════════════════════════════════════════════════ -->
+  <footer class="band foot" id="contact">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <span class="mono" style="color: var(--ink-38)">Écrire</span>
+        <a href="mailto:timotheeberthelot1@gmail.com">timotheeberthelot1@gmail.com</a>
+      </div>
+      <div class="foot-col">
+        <span class="mono" style="color: var(--ink-38)">Code</span>
+        <a href="https://github.com/timsup777" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+      <div class="foot-col">
+        <span class="mono" style="color: var(--ink-38)">Réseau</span>
+        <a href="https://linkedin.com/in/timoth%C3%A9e-collet-457b96238" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+      <div class="foot-col">
+        <span class="mono" style="color: var(--ink-38)">Situation</span>
+        <span>Montreuil, Île-de-France</span>
+      </div>
+    </div>
+
+    <div class="colophon mono">
+      <span>Timothée Collet Berthelot — Portfolio</span>
+      <span>Geist &amp; Geist Mono</span>
+      <span>Mise à jour : septembre 2026</span>
+    </div>
+  </footer>
+
+</main>
 </BaseLayout>
+
+<style is:global>
+/* ────────────────────────────────────────────────────────────────
+   Registre — portfolio de Timothée Berthelot
+   Palette et typographie reprises de colletdigital.com :
+   crème #f4f5ef, encre #161614, Geist. Traitement : document
+   technique plutôt que vitrine. Monochrome, signaux fonctionnels
+   réduits au strict nécessaire.
+   ──────────────────────────────────────────────────────────────── */
+
+:root {
+  --ground:      #f4f5ef;
+  --ground-sunk: #eceee4;
+  --ink:         #161614;
+
+  --ink-90: rgba(22, 22, 20, .90);
+  --ink-70: rgba(22, 22, 20, .70);
+  --ink-52: rgba(22, 22, 20, .52);
+  --ink-38: rgba(22, 22, 20, .38);
+  --rule:   rgba(22, 22, 20, .16);
+  --rule-2: rgba(22, 22, 20, .08);
+  --wash:   rgba(22, 22, 20, .035);
+
+  --sig-live: #2f6b4f;
+  --sig-wip:  #8a6a2f;
+  --sig-done: rgba(22, 22, 20, .45);
+
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --measure: 63ch;
+  --pad: clamp(20px, 5vw, 76px);
+  --rail: 168px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:      #131311;
+    --ground-sunk: #191917;
+    --ink:         #f4f5ef;
+
+    --ink-90: rgba(244, 245, 239, .90);
+    --ink-70: rgba(244, 245, 239, .68);
+    --ink-52: rgba(244, 245, 239, .50);
+    --ink-38: rgba(244, 245, 239, .36);
+    --rule:   rgba(244, 245, 239, .18);
+    --rule-2: rgba(244, 245, 239, .09);
+    --wash:   rgba(244, 245, 239, .04);
+
+    --sig-live: #6fae8c;
+    --sig-wip:  #cfa860;
+    --sig-done: rgba(244, 245, 239, .42);
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground:      #131311;
+  --ground-sunk: #191917;
+  --ink:         #f4f5ef;
+
+  --ink-90: rgba(244, 245, 239, .90);
+  --ink-70: rgba(244, 245, 239, .68);
+  --ink-52: rgba(244, 245, 239, .50);
+  --ink-38: rgba(244, 245, 239, .36);
+  --rule:   rgba(244, 245, 239, .18);
+  --rule-2: rgba(244, 245, 239, .09);
+  --wash:   rgba(244, 245, 239, .04);
+
+  --sig-live: #6fae8c;
+  --sig-wip:  #cfa860;
+  --sig-done: rgba(244, 245, 239, .42);
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--ground);
+  padding: 10px 16px;
+  z-index: 50;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.skip:focus { left: 12px; top: 12px; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.62;
+  font-weight: 380;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+::selection { background: var(--ink); color: var(--ground); }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* ── Ossature ─────────────────────────────────────────────────── */
+
+.sheet {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.band { border-top: 1px solid var(--rule); }
+
+.row {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 56px);
+  padding: clamp(44px, 6vw, 86px) 0;
+}
+
+@media (max-width: 860px) {
+  .row { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+}
+
+/* ── Micro-typographie ────────────────────────────────────────── */
+
+.mono {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 450;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.rail-label {
+  color: var(--ink-52);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: sticky;
+  top: 26px;
+  align-self: start;
+}
+@media (max-width: 860px) { .rail-label { position: static; flex-direction: row; gap: 12px; } }
+
+.rail-num { color: var(--ink-38); }
+
+h2.title {
+  font-size: clamp(30px, 4.4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -.028em;
+  line-height: 1.03;
+  margin: 0 0 22px;
+  text-wrap: balance;
+}
+
+.lede {
+  max-width: var(--measure);
+  font-size: clamp(17px, 1.6vw, 19.5px);
+  color: var(--ink-90);
+  margin: 0 0 20px;
+}
+
+p { max-width: var(--measure); margin: 0 0 17px; color: var(--ink-90); }
+p:last-child { margin-bottom: 0; }
+
+/* ── Nameplate ────────────────────────────────────────────────── */
+
+.masthead { padding: clamp(28px, 4vw, 40px) 0 clamp(40px, 6vw, 64px); }
+
+.masthead-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 26px;
+  justify-content: space-between;
+  align-items: baseline;
+  color: var(--ink-52);
+  padding-bottom: clamp(34px, 7vw, 76px);
+}
+
+.nameplate {
+  font-size: clamp(46px, 13.4vw, 178px);
+  font-weight: 900;
+  letter-spacing: -.038em;
+  line-height: .82;
+  margin: 0;
+  text-transform: uppercase;
+}
+.nameplate span { display: block; }
+.nameplate .n3 { text-indent: .05em; }
+
+.standfirst {
+  margin-top: clamp(28px, 4vw, 46px);
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 56px);
+  align-items: start;
+}
+@media (max-width: 860px) { .standfirst { grid-template-columns: minmax(0, 1fr); } }
+
+.standfirst .role {
+  font-size: clamp(19px, 2.3vw, 25px);
+  font-weight: 500;
+  letter-spacing: -.018em;
+  line-height: 1.32;
+  margin: 0;
+  max-width: 30ch;
+  text-wrap: balance;
+}
+
+/* Fiche d'identité — paires clé/valeur alignées */
+.ident { display: grid; gap: 0; }
+.ident div {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 16px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule-2);
+  align-items: baseline;
+}
+.ident div:first-child { border-top: 1px solid var(--rule-2); }
+.ident dt { color: var(--ink-38); }
+.ident dd { margin: 0; font-size: 14.5px; color: var(--ink-90); }
+
+/* ── Triptyque : passé / présent / futur ──────────────────────── */
+
+.tryp {
+  margin-top: clamp(32px, 4.5vw, 60px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--rule);
+}
+
+.tryp-col {
+  position: relative;
+  padding: 26px clamp(14px, 2vw, 30px) 0;
+  border-left: 1px solid var(--rule-2);
+  display: grid;
+  gap: 13px;
+  align-content: start;
+}
+.tryp-col:first-child { padding-left: 0; border-left: 0; }
+.tryp-col:last-child { padding-right: 0; }
+
+/* Repère sur l'axe : creux pour ce qui est passé ou à venir, plein pour maintenant */
+.tryp-col::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ground);
+  box-shadow: inset 0 0 0 1.5px var(--ink-38);
+}
+.tryp-col[data-now]::before {
+  background: var(--ink);
+  box-shadow: none;
+}
+
+.tryp-when { color: var(--ink-38); }
+
+.tryp-tense {
+  font-size: clamp(23px, 2.7vw, 32px);
+  font-weight: 820;
+  letter-spacing: -.024em;
+  line-height: 1.02;
+  margin: 0;
+}
+
+.tryp-lead {
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink-90);
+  margin: 0;
+  max-width: 34ch;
+}
+
+.tryp-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.tryp-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--ink-70);
+}
+.tryp-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .64em;
+  width: 8px;
+  height: 1px;
+  background: var(--ink-38);
+}
+
+@media (max-width: 860px) {
+  .tryp { grid-template-columns: minmax(0, 1fr); border-top: 0; gap: 0; }
+  .tryp-col {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+    padding: 26px 0 30px;
+  }
+  .tryp-col:last-child { padding-bottom: 0; }
+}
+
+/* ── Registre des projets ─────────────────────────────────────── */
+
+.register { border-top: 1px solid var(--rule); }
+
+.entry { border-bottom: 1px solid var(--rule-2); }
+
+.entry-head {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 128px 26px;
+  gap: 18px;
+  align-items: baseline;
+  padding: 19px 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color .16s ease, padding-left .16s ease;
+}
+.entry-head:hover { background: var(--wash); padding-left: 9px; }
+.entry-head { list-style: none; }
+.entry-head::-webkit-details-marker { display: none; }
+.entry-head::marker { content: ""; }
+
+@media (max-width: 720px) {
+  .entry-head { grid-template-columns: 32px minmax(0, 1fr) 26px; gap: 12px; }
+  .entry-head .state { grid-column: 2 / 3; }
+}
+
+.entry-num { color: var(--ink-38); }
+
+.entry-name {
+  font-size: clamp(20px, 2.5vw, 27px);
+  font-weight: 620;
+  letter-spacing: -.022em;
+  line-height: 1.16;
+}
+
+.state { display: flex; align-items: center; gap: 7px; color: var(--ink-52); }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sig-done); flex: none; }
+.state[data-s="live"] .dot { background: var(--sig-live); }
+.state[data-s="wip"]  .dot { background: var(--sig-wip); }
+.state[data-s="plan"] .dot { background: transparent; box-shadow: inset 0 0 0 1.5px var(--ink-38); }
+
+.chev {
+  justify-self: end;
+  color: var(--ink-38);
+  transition: transform .2s ease;
+  line-height: 1;
+  font-size: 19px;
+}
+.entry[open] .chev { transform: rotate(45deg); }
+
+.entry-body {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 18px;
+  padding: 0 0 30px;
+}
+@media (max-width: 720px) { .entry-body { grid-template-columns: minmax(0, 1fr); } }
+
+.entry-body > .spacer { }
+.entry-inner { display: grid; gap: 20px; max-width: 74ch; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-70);
+  border: 1px solid var(--rule);
+  padding: 4px 9px;
+  white-space: nowrap;
+}
+
+.links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.links a {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  transition: border-color .16s ease;
+}
+.links a:hover { border-color: var(--ink); }
+.links .closed {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ink-38);
+}
+
+/* ── Spécification des compétences ────────────────────────────── */
+
+.spec { display: grid; gap: 0; }
+.spec-block {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 40px);
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule-2);
+}
+.spec-block:first-child { border-top: 1px solid var(--rule); }
+@media (max-width: 720px) { .spec-block { grid-template-columns: minmax(0, 1fr); gap: 12px; } }
+
+.spec-block h3 {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: -.008em;
+}
+.spec-block p { margin: 0 0 12px; font-size: 15.5px; color: var(--ink-70); max-width: 58ch; }
+
+/* ── Formation, feuille de route ──────────────────────────────── */
+
+.ledger { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.ledger caption { text-align: left; color: var(--ink-38); padding-bottom: 12px; }
+.ledger th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 450;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+  color: var(--ink-38);
+  padding: 0 16px 9px 0;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+.ledger td {
+  padding: 14px 16px 14px 0;
+  border-bottom: 1px solid var(--rule-2);
+  vertical-align: baseline;
+  font-size: 15.5px;
+}
+.ledger td:last-child, .ledger th:last-child { padding-right: 0; }
+.ledger .yr { font-family: var(--mono); font-size: 12.5px; color: var(--ink-52); white-space: nowrap; }
+.ledger .it { font-weight: 520; }
+.ledger .note { color: var(--ink-52); font-size: 14.5px; }
+.scroll-x { overflow-x: auto; }
+
+.status {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid var(--rule);
+  padding: 3px 8px;
+  color: var(--ink-70);
+}
+.status[data-s="ok"]   { border-color: color-mix(in srgb, var(--sig-live) 55%, transparent); color: var(--sig-live); }
+.status[data-s="wip"]  { border-color: color-mix(in srgb, var(--sig-wip) 55%, transparent);  color: var(--sig-wip); }
+
+/* ── Pied ─────────────────────────────────────────────────────── */
+
+.foot { padding: clamp(46px, 6vw, 82px) 0 clamp(34px, 5vw, 60px); }
+.foot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 28px 36px;
+  padding-bottom: clamp(40px, 6vw, 70px);
+}
+.foot-col { display: grid; gap: 8px; align-content: start; }
+.foot-col a { text-decoration: none; font-size: 15.5px; border-bottom: 1px solid var(--rule); justify-self: start; padding-bottom: 2px; transition: border-color .16s ease; }
+.foot-col a:hover { border-color: var(--ink); }
+.foot-col span { font-size: 15.5px; color: var(--ink-90); }
+
+.colophon {
+  border-top: 1px solid var(--rule);
+  padding-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  justify-content: space-between;
+  color: var(--ink-38);
+}
+
+/* ── Bascule de thème ─────────────────────────────────────────── */
+
+.theme-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--ink-52);
+  padding: 5px 11px;
+  cursor: pointer;
+  transition: border-color .16s ease, color .16s ease;
+}
+.theme-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+</style>
+
+<script is:inline>
+(function () {
+  var root = document.documentElement;
+  root.lang = 'fr';
+  var btn = document.getElementById('theme');
+
+  function current() {
+    if (root.dataset.theme) return root.dataset.theme;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  try {
+    var saved = localStorage.getItem('tb-theme');
+    if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+  } catch (e) {}
+
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('tb-theme', next); } catch (e) {}
+  });
+
+  /* Une seule entrée du registre ouverte à la fois. */
+  var entries = Array.prototype.slice.call(document.querySelectorAll('.entry'));
+  entries.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      entries.forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+})();
+</script>

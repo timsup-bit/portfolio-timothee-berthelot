@@ -6,8 +6,7 @@ export default defineConfig({
    vite: {
     plugins: [tailwindcss()],
   },
-  // add yur domain name here
-  site: 'https://yourdomain.com',
+  site: 'https://www.colletdigital.com',
   compressHTML: true,
   integrations: [sitemap()]
 });
