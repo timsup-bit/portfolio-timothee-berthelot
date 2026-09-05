@@ -574,6 +574,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   --sig-alerte: #b3402e;
   --voile: #131311;
+  --tex-gain: 1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -602,6 +603,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     --sig-alerte: #e07a63;
     --voile: #f4f5ef;
+    --tex-gain: 1;
   }
 }
 
@@ -630,6 +632,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   --sig-alerte: #e07a63;
   --voile: #f4f5ef;
+  --tex-gain: 1;
 }
 
 .skip {
@@ -652,6 +655,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 body {
   margin: 0;
+  /* clip et non hidden : hidden créerait un conteneur de défilement et
+     casserait les rails en position sticky. */
+  overflow-x: clip;
   background: var(--ground);
   color: var(--ink);
   font-family: var(--sans);
@@ -889,7 +895,7 @@ p:last-child { margin-bottom: 0; }
 .entry-head {
   width: 100%;
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) 128px 26px;
+  grid-template-columns: 44px minmax(0, 1fr) 156px 26px;
   gap: 18px;
   align-items: baseline;
   padding: 19px 0;
@@ -899,7 +905,7 @@ p:last-child { margin-bottom: 0; }
   color: inherit;
   text-align: left;
   cursor: pointer;
-  transition: background-color .16s ease, padding-left .16s ease;
+  transition: background-color .26s cubic-bezier(.2, .72, .28, 1), padding-left .26s cubic-bezier(.2, .72, .28, 1);
 }
 .entry-head:hover { background: var(--wash); padding-left: 9px; }
 .entry-head { list-style: none; }
@@ -920,7 +926,7 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.16;
 }
 
-.state { display: flex; align-items: center; gap: 7px; color: var(--ink-52); }
+.state { display: flex; align-items: center; gap: 7px; color: var(--ink-52); white-space: nowrap; }
 .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sig-done); flex: none; }
 .state[data-s="live"] .dot { background: var(--sig-live); }
 .state[data-s="wip"]  .dot { background: var(--sig-wip); }
@@ -929,7 +935,7 @@ p:last-child { margin-bottom: 0; }
 .chev {
   justify-self: end;
   color: var(--ink-38);
-  transition: transform .2s ease;
+  transition: transform .34s cubic-bezier(.34, 1.4, .5, 1);
   line-height: 1;
   font-size: 19px;
 }
@@ -1078,13 +1084,15 @@ p:last-child { margin-bottom: 0; }
 .masthead::before, .band::before {
   content: "";
   position: absolute;
-  inset: 0;
+  /* Débordement jusqu'aux bords de la fenêtre : enfermée dans la colonne
+     de contenu, la texture se coupait sur une arête verticale nette. */
+  inset: 0 calc(50% - 50vw);
   background-image: var(--tex-clair);
   background-size: cover;
   background-position: var(--tex-cadre, 50% 40%);
   background-repeat: no-repeat;
   mix-blend-mode: var(--champ-fusion);
-  opacity: var(--tex-force, 0);
+  opacity: calc(var(--tex-force, 0) * var(--tex-gain, 1));
   pointer-events: none;
   z-index: -1;
   -webkit-mask-image: var(--tex-masque, none);
@@ -1094,73 +1102,73 @@ p:last-child { margin-bottom: 0; }
 .masthead {
   --tex-clair: image-set(url("/media/hero-clair.avif") type("image/avif"), url("/media/hero-clair.webp") type("image/webp"));
   --tex-sombre: image-set(url("/media/hero-sombre.avif") type("image/avif"), url("/media/hero-sombre.webp") type("image/webp"));
-  --tex-force: .54;
+  --tex-force: .62;
   --tex-cadre: 78% 26%;
-  --tex-masque: radial-gradient(88% 116% at 94% 30%, #000 16%, transparent 70%);
+  --tex-masque: radial-gradient(120% 150% at 88% 34%, #000 34%, transparent 92%);
 }
 
 #parcours {
   --tex-clair: image-set(url("/media/parcours-clair.avif") type("image/avif"), url("/media/parcours-clair.webp") type("image/webp"));
   --tex-sombre: image-set(url("/media/parcours-sombre.avif") type("image/avif"), url("/media/parcours-sombre.webp") type("image/webp"));
-  --tex-force: .58;
+  --tex-force: .5;
   --tex-cadre: 26% 44%;
-  --tex-masque: radial-gradient(84% 120% at 6% 50%, #000 14%, transparent 68%);
+  --tex-masque: radial-gradient(118% 152% at 12% 50%, #000 32%, transparent 90%);
 }
 
 #projets {
   --tex-clair: image-set(url("/media/registre-clair.avif") type("image/avif"), url("/media/registre-clair.webp") type("image/webp"));
   --tex-sombre: image-set(url("/media/registre-sombre.avif") type("image/avif"), url("/media/registre-sombre.webp") type("image/webp"));
-  --tex-force: .2;
+  --tex-force: .26;
   --tex-cadre: 72% 40%;
-  --tex-masque: radial-gradient(92% 120% at 98% 42%, #000 18%, transparent 74%);
+  --tex-masque: radial-gradient(124% 150% at 92% 44%, #000 36%, transparent 94%);
 }
 
 #competences {
   --tex-clair: image-set(url("/media/compet-clair.avif") type("image/avif"), url("/media/compet-clair.webp") type("image/webp"));
   --tex-sombre: image-set(url("/media/compet-sombre.avif") type("image/avif"), url("/media/compet-sombre.webp") type("image/webp"));
-  --tex-force: .52;
+  --tex-force: .60;
   --tex-cadre: 22% 46%;
-  --tex-masque: radial-gradient(80% 118% at 4% 54%, #000 12%, transparent 66%);
+  --tex-masque: radial-gradient(116% 150% at 10% 54%, #000 30%, transparent 88%);
 }
 
 #experience {
   --tex-clair: image-set(url("/media/experience-clair.avif") type("image/avif"), url("/media/experience-clair.webp") type("image/webp"));
   --tex-sombre: image-set(url("/media/experience-sombre.avif") type("image/avif"), url("/media/experience-sombre.webp") type("image/webp"));
-  --tex-force: .5;
+  --tex-force: .58;
   --tex-cadre: 62% 58%;
-  --tex-masque: radial-gradient(110% 130% at 96% 62%, #000 16%, transparent 72%);
+  --tex-masque: radial-gradient(130% 156% at 90% 60%, #000 34%, transparent 92%);
 }
 
 #formation {
   --tex-clair: image-set(url("/media/formation-clair.avif") type("image/avif"), url("/media/formation-clair.webp") type("image/webp"));
   --tex-sombre: image-set(url("/media/formation-sombre.avif") type("image/avif"), url("/media/formation-sombre.webp") type("image/webp"));
-  --tex-force: .5;
+  --tex-force: .58;
   --tex-cadre: 24% 38%;
-  --tex-masque: radial-gradient(78% 118% at 6% 44%, #000 12%, transparent 66%);
+  --tex-masque: radial-gradient(116% 150% at 12% 46%, #000 30%, transparent 88%);
 }
 
 #trajectoire {
   --tex-clair: image-set(url("/media/trajet-clair.avif") type("image/avif"), url("/media/trajet-clair.webp") type("image/webp"));
   --tex-sombre: image-set(url("/media/trajet-sombre.avif") type("image/avif"), url("/media/trajet-sombre.webp") type("image/webp"));
-  --tex-force: .55;
+  --tex-force: .62;
   --tex-cadre: 74% 42%;
-  --tex-masque: radial-gradient(88% 122% at 96% 46%, #000 16%, transparent 72%);
+  --tex-masque: radial-gradient(122% 152% at 90% 46%, #000 34%, transparent 92%);
 }
 
 #axe {
   --tex-clair: image-set(url("/media/champ-clair.avif") type("image/avif"), url("/media/champ-clair.webp") type("image/webp"));
   --tex-sombre: image-set(url("/media/champ-sombre.avif") type("image/avif"), url("/media/champ-sombre.webp") type("image/webp"));
-  --tex-force: .5;
+  --tex-force: .56;
   --tex-cadre: 46% 32%;
-  --tex-masque: radial-gradient(125% 96% at 100% 46%, #000 26%, transparent 76%);
+  --tex-masque: radial-gradient(128% 140% at 94% 48%, #000 34%, transparent 92%);
 }
 
 .foot {
   --tex-clair: image-set(url("/media/machine-clair.avif") type("image/avif"), url("/media/machine-clair.webp") type("image/webp"));
   --tex-sombre: image-set(url("/media/machine-sombre.avif") type("image/avif"), url("/media/machine-sombre.webp") type("image/webp"));
-  --tex-force: .32;
+  --tex-force: .42;
   --tex-cadre: 80% 34%;
-  --tex-masque: radial-gradient(96% 120% at 94% 38%, #000 14%, transparent 70%);
+  --tex-masque: radial-gradient(124% 150% at 90% 40%, #000 30%, transparent 90%);
 }
 
 :root[data-theme="dark"] .masthead::before,
@@ -1248,6 +1256,43 @@ p:last-child { margin-bottom: 0; }
   transition: border-color .16s ease, color .16s ease;
 }
 .theme-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+/* ── Fluidité ─────────────────────────────────────────────────────
+   Dérive des textures pilotée par le défilement : l'animation est portée
+   par le compositeur, sans JavaScript et sans calcul à chaque image. Les
+   navigateurs qui ne la connaissent pas affichent la texture immobile. */
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .masthead::before, .band::before {
+      animation: derive linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+      will-change: transform;
+    }
+  }
+}
+
+@keyframes derive {
+  from { transform: translate3d(0, -7%, 0) scale(1.16); }
+  to   { transform: translate3d(0, 7%, 0)  scale(1.16); }
+}
+
+/* Le contenu d'une entrée du registre se déplie au lieu d'apparaître sec. */
+@media (prefers-reduced-motion: no-preference) {
+  .entry[open] .entry-inner {
+    animation: deplie .36s cubic-bezier(.2, .72, .28, 1) both;
+  }
+}
+
+@keyframes deplie {
+  from { opacity: 0; transform: translateY(-7px); }
+  to   { opacity: 1; transform: none; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }

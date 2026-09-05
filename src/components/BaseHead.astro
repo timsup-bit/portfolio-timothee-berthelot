@@ -46,6 +46,25 @@ const description = "Portfolio de Timothée Collet Berthelot, développeur logic
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f5ef" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#131311" />
 
+<!-- Le thème est décidé avant la première peinture : sinon le navigateur
+     affiche d'abord la préférence système, puis bascule quand le script de
+     fin de page s'exécute — un flash de mauvais thème. -->
+<script is:inline>
+  (function () {
+    var r = document.documentElement, choix = null;
+    try {
+      var v = localStorage.getItem("tb-theme");
+      if (v === "dark" || v === "light") choix = v;
+    } catch (e) {}
+    if (!choix) {
+      var h = new Date().getHours();
+      choix = (h >= 6 && h < 18) ? "light" : "dark";
+    }
+    r.dataset.theme = choix;
+    r.lang = "fr";
+  })();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
