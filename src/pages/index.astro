@@ -421,6 +421,66 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       <p>Le problème se durcit dès que le modèle est outillé : accès à une base, à un navigateur, à une messagerie. L'exécution d'une instruction hostile cesse d'être une curiosité et devient une exfiltration. C'est le terrain que je veux apprendre à défendre, parce qu'il est neuf, parce qu'il n'a pas encore ses réflexes, et parce que les systèmes concernés se déploient plus vite qu'ils ne se sécurisent.</p>
 
+      <figure class="schema">
+        <svg viewBox="0 0 960 272" role="img"
+             aria-label="Une consigne légitime de l'utilisateur et des instructions dissimulées dans un contenu récupéré arrivent sur le même canal dans le contexte du modèle. Le modèle appelle alors un outil, qui exfiltre une donnée privée vers un tiers.">
+          <defs>
+            <marker id="fl-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="currentColor"></path>
+            </marker>
+            <marker id="fl-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9 z" fill="var(--sig-alerte)"></path>
+            </marker>
+          </defs>
+
+          <g fill="none" stroke="currentColor" stroke-width="1">
+            <rect x="16" y="26" width="200" height="66"></rect>
+            <rect x="316" y="104" width="248" height="92"></rect>
+            <rect x="664" y="116" width="184" height="68"></rect>
+          </g>
+          <rect x="16" y="196" width="200" height="66" fill="none"
+                stroke="var(--sig-alerte)" stroke-width="1" stroke-dasharray="4 3"></rect>
+
+          <g fill="currentColor" font-family="ui-sans-serif, system-ui, sans-serif">
+            <text x="32" y="54" font-size="14.5" font-weight="600">Utilisateur</text>
+            <text x="32" y="75" font-size="11.5" opacity=".6">consigne l&#233;gitime</text>
+
+            <text x="32" y="224" font-size="14.5" font-weight="600" fill="var(--sig-alerte)">Contenu r&#233;cup&#233;r&#233;</text>
+            <text x="32" y="245" font-size="11.5" opacity=".6">consignes dissimul&#233;es</text>
+
+            <text x="332" y="134" font-size="14.5" font-weight="600">Contexte du mod&#232;le</text>
+            <text x="332" y="157" font-size="11.5" opacity=".6">instructions et donn&#233;es</text>
+            <text x="332" y="174" font-size="11.5" opacity=".6">y entrent sans distinction</text>
+
+            <text x="680" y="146" font-size="14.5" font-weight="600">Outils</text>
+            <text x="680" y="167" font-size="11.5" opacity=".6">base, r&#233;seau, messagerie</text>
+          </g>
+
+          <!-- Les deux origines rejoignent un point commun, puis une seule
+               ligne entre dans le contexte : passe ce point, plus rien ne
+               distingue une consigne d'une donn&#233;e. -->
+          <g fill="none" stroke="currentColor" stroke-width="1">
+            <polyline points="216,59 266,59 266,150"></polyline>
+            <line x1="266" y1="150" x2="310" y2="150" marker-end="url(#fl-p)"></line>
+            <line x1="564" y1="150" x2="658" y2="150" marker-end="url(#fl-p)"></line>
+          </g>
+          <polyline points="216,229 266,229 266,150" fill="none"
+                    stroke="var(--sig-alerte)" stroke-width="1" stroke-dasharray="4 3"></polyline>
+          <circle cx="266" cy="150" r="3.4" fill="currentColor"></circle>
+          <line x1="848" y1="150" x2="936" y2="150" fill="none"
+                stroke="var(--sig-alerte)" stroke-width="1" stroke-dasharray="4 3"
+                marker-end="url(#fl-a)"></line>
+
+          <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="11.5">
+            <text x="611" y="142" fill="currentColor" opacity=".6" text-anchor="middle">appel d&rsquo;outil</text>
+            <text x="892" y="142" fill="var(--sig-alerte)" text-anchor="middle">exfiltration</text>
+            <text x="936" y="174" fill="currentColor" opacity=".6" text-anchor="end">vers un tiers</text>
+            <text x="440" y="248" fill="currentColor" opacity=".72" text-anchor="middle">Aucune fronti&#232;re&#160;: les deux entrent par le m&#234;me canal.</text>
+          </g>
+        </svg>
+        <figcaption>Le chemin d&rsquo;une injection de prompt indirecte. Une requête SQL s&rsquo;échappe parce que la commande et la donnée circulent séparément&nbsp;; ici elles partagent le même canal, et c&rsquo;est ce qui rend la parade difficile.</figcaption>
+      </figure>
+
       <div class="scroll-x">
         <table class="ledger">
           <caption class="mono">Chantiers que je compte ouvrir</caption>
@@ -509,6 +569,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --champ: image-set(url("/media/champ-clair.avif") type("image/avif"), url("/media/champ-clair.webp") type("image/webp"));
   --champ-fusion: multiply;
   --champ-force: .42;
+
+  --sig-alerte: #b3402e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -534,6 +596,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     --champ: image-set(url("/media/champ-sombre.avif") type("image/avif"), url("/media/champ-sombre.webp") type("image/webp"));
     --champ-fusion: screen;
     --champ-force: .5;
+
+    --sig-alerte: #e07a63;
   }
 }
 
@@ -559,6 +623,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --champ: image-set(url("/media/champ-sombre.avif") type("image/avif"), url("/media/champ-sombre.webp") type("image/webp"));
   --champ-fusion: screen;
   --champ-force: .5;
+
+  --sig-alerte: #e07a63;
 }
 
 .skip {
@@ -969,6 +1035,30 @@ p:last-child { margin-bottom: 0; }
 }
 .status[data-s="ok"]   { border-color: color-mix(in srgb, var(--sig-live) 55%, transparent); color: var(--sig-live); }
 .status[data-s="wip"]  { border-color: color-mix(in srgb, var(--sig-wip) 55%, transparent);  color: var(--sig-wip); }
+
+/* ── Figure : chemin d'une injection indirecte ────────────────── */
+
+.schema {
+  margin: clamp(30px, 4vw, 46px) 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--rule);
+}
+
+.schema svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 960px;
+  overflow: visible;
+}
+
+.schema figcaption {
+  margin: 16px 0 0;
+  max-width: 62ch;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-52);
+}
 
 /* ── Texture de la section « sécurité des IA » ────────────────────
    Un visage reconstitué en points discrets : une représentation, ce
