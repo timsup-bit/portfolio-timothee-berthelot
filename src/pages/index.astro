@@ -3,6 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
+<div id="voile" aria-hidden="true"></div>
+
 <a class="skip" href="#parcours">Aller au contenu</a>
 
 <main class="sheet">
@@ -571,6 +573,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --champ-force: .42;
 
   --sig-alerte: #b3402e;
+  --voile: #131311;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -598,6 +601,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     --champ-force: .5;
 
     --sig-alerte: #e07a63;
+    --voile: #f4f5ef;
   }
 }
 
@@ -625,6 +629,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --champ-force: .5;
 
   --sig-alerte: #e07a63;
+  --voile: #f4f5ef;
 }
 
 .skip {
@@ -1060,38 +1065,143 @@ p:last-child { margin-bottom: 0; }
   color: var(--ink-52);
 }
 
-/* ── Texture de la section « sécurité des IA » ────────────────────
-   Un visage reconstitué en points discrets : une représentation, ce
-   dont parle précisément la section. Posée à droite, elle s'efface en
-   dégradé avant d'atteindre la colonne de lecture. Pas d'overflow
-   hidden sur la section : cela casserait le rail en position sticky. */
+/* ── Couche de texture, une par section ───────────────────────────
+   Toutes les sources passent par le même traitement : monochrome, deux
+   variantes, faible opacité, masque radial. C'est le traitement qui fait
+   l'unité, pas le choix des images. Le négatif se fond en multiply sur la
+   crème, le positif en screen sur l'encre : dans les deux cas le fond de
+   l'image disparaît dans celui de la page.
+   Pas d'overflow hidden : cela casserait les rails en position sticky. */
 
-#axe { position: relative; isolation: isolate; }
+.masthead, .band { position: relative; isolation: isolate; }
 
-#axe::before {
+.masthead::before, .band::before {
   content: "";
   position: absolute;
-  inset: 0 0 0 auto;
-  width: min(46%, 560px);
-  background-image: var(--champ);
+  inset: 0;
+  background-image: var(--tex-clair);
   background-size: cover;
-  background-position: 46% 32%;
+  background-position: var(--tex-cadre, 50% 40%);
   background-repeat: no-repeat;
   mix-blend-mode: var(--champ-fusion);
-  opacity: var(--champ-force);
+  opacity: var(--tex-force, 0);
   pointer-events: none;
   z-index: -1;
-  -webkit-mask-image: radial-gradient(125% 96% at 100% 46%, #000 26%, transparent 76%);
-  mask-image: radial-gradient(125% 96% at 100% 46%, #000 26%, transparent 76%);
+  -webkit-mask-image: var(--tex-masque, none);
+  mask-image: var(--tex-masque, none);
+}
+
+.masthead {
+  --tex-clair: image-set(url("/media/hero-clair.avif") type("image/avif"), url("/media/hero-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/hero-sombre.avif") type("image/avif"), url("/media/hero-sombre.webp") type("image/webp"));
+  --tex-force: .54;
+  --tex-cadre: 78% 26%;
+  --tex-masque: radial-gradient(88% 116% at 94% 30%, #000 16%, transparent 70%);
+}
+
+#parcours {
+  --tex-clair: image-set(url("/media/parcours-clair.avif") type("image/avif"), url("/media/parcours-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/parcours-sombre.avif") type("image/avif"), url("/media/parcours-sombre.webp") type("image/webp"));
+  --tex-force: .58;
+  --tex-cadre: 26% 44%;
+  --tex-masque: radial-gradient(84% 120% at 6% 50%, #000 14%, transparent 68%);
+}
+
+#projets {
+  --tex-clair: image-set(url("/media/registre-clair.avif") type("image/avif"), url("/media/registre-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/registre-sombre.avif") type("image/avif"), url("/media/registre-sombre.webp") type("image/webp"));
+  --tex-force: .2;
+  --tex-cadre: 72% 40%;
+  --tex-masque: radial-gradient(92% 120% at 98% 42%, #000 18%, transparent 74%);
+}
+
+#competences {
+  --tex-clair: image-set(url("/media/compet-clair.avif") type("image/avif"), url("/media/compet-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/compet-sombre.avif") type("image/avif"), url("/media/compet-sombre.webp") type("image/webp"));
+  --tex-force: .52;
+  --tex-cadre: 22% 46%;
+  --tex-masque: radial-gradient(80% 118% at 4% 54%, #000 12%, transparent 66%);
+}
+
+#experience {
+  --tex-clair: image-set(url("/media/experience-clair.avif") type("image/avif"), url("/media/experience-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/experience-sombre.avif") type("image/avif"), url("/media/experience-sombre.webp") type("image/webp"));
+  --tex-force: .5;
+  --tex-cadre: 62% 58%;
+  --tex-masque: radial-gradient(110% 130% at 96% 62%, #000 16%, transparent 72%);
+}
+
+#formation {
+  --tex-clair: image-set(url("/media/formation-clair.avif") type("image/avif"), url("/media/formation-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/formation-sombre.avif") type("image/avif"), url("/media/formation-sombre.webp") type("image/webp"));
+  --tex-force: .5;
+  --tex-cadre: 24% 38%;
+  --tex-masque: radial-gradient(78% 118% at 6% 44%, #000 12%, transparent 66%);
+}
+
+#trajectoire {
+  --tex-clair: image-set(url("/media/trajet-clair.avif") type("image/avif"), url("/media/trajet-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/trajet-sombre.avif") type("image/avif"), url("/media/trajet-sombre.webp") type("image/webp"));
+  --tex-force: .55;
+  --tex-cadre: 74% 42%;
+  --tex-masque: radial-gradient(88% 122% at 96% 46%, #000 16%, transparent 72%);
+}
+
+#axe {
+  --tex-clair: image-set(url("/media/champ-clair.avif") type("image/avif"), url("/media/champ-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/champ-sombre.avif") type("image/avif"), url("/media/champ-sombre.webp") type("image/webp"));
+  --tex-force: .5;
+  --tex-cadre: 46% 32%;
+  --tex-masque: radial-gradient(125% 96% at 100% 46%, #000 26%, transparent 76%);
+}
+
+.foot {
+  --tex-clair: image-set(url("/media/machine-clair.avif") type("image/avif"), url("/media/machine-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/machine-sombre.avif") type("image/avif"), url("/media/machine-sombre.webp") type("image/webp"));
+  --tex-force: .32;
+  --tex-cadre: 80% 34%;
+  --tex-masque: radial-gradient(96% 120% at 94% 38%, #000 14%, transparent 70%);
+}
+
+:root[data-theme="dark"] .masthead::before,
+:root[data-theme="dark"] .band::before {
+  background-image: var(--tex-sombre);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .masthead::before,
+  :root:not([data-theme="light"]) .band::before {
+    background-image: var(--tex-sombre);
+  }
 }
 
 @media (max-width: 860px) {
-  #axe::before { width: 100%; opacity: calc(var(--champ-force) * .55); }
+  .masthead::before, .band::before {
+    background-position: 50% 40%;
+    opacity: calc(var(--tex-force, 0) * .6);
+    -webkit-mask-image: radial-gradient(120% 100% at 50% 40%, #000 20%, transparent 78%);
+    mask-image: radial-gradient(120% 100% at 50% 40%, #000 20%, transparent 78%);
+  }
 }
 
-/* Qui demande davantage de contraste ne veut pas d'image sous le texte. */
 @media (prefers-contrast: more) {
-  #axe::before { display: none; }
+  .masthead::before, .band::before { display: none; }
+}
+
+/* ── Voile d'ouverture ────────────────────────────────────────────
+   Le rythme et le contraste montent ensemble : départ très rapide en
+   micro-contraste, puis les battements s'espacent pendant que le voile
+   s'opacifie, jusqu'à l'inversion pleine à un battement par seconde.
+   Le passage rapide reste sous le seuil de luminance des contenus
+   clignotants ; l'inversion pleine n'arrive qu'au rythme le plus lent. */
+
+#voile {
+  position: fixed;
+  inset: 0;
+  background: var(--voile);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 90;
 }
 
 /* ── Pied ─────────────────────────────────────────────────────── */
@@ -1188,32 +1298,38 @@ p:last-child { margin-bottom: 0; }
   }
 
   /* ── Ouverture ──────────────────────────────────────────────────────
-     Quatre inversions à 170 ms, soit environ 2,9 flashs par seconde :
-     juste sous le seuil de 3 par seconde fixé par la règle WCAG 2.3.1
-     sur les contenus clignotants. Le jour, la page s'ouvre dans le noir
-     et bascule vers le clair ; le soir, l'inverse. Séquence supprimée
-     pour qui a demandé moins d'animations. */
-  /* 170 ms est le pas le plus court admissible : à cette cadence la page
-     produit environ 2,9 flashs par seconde, juste sous le seuil de 3/s
-     de la règle WCAG 2.3.1. Descendre en dessous ferait de cette page un
-     risque avéré pour les personnes photosensibles. On allonge donc la
-     séquence plutôt que de l'accélérer. */
-  var STEP = 170;
-  var FLIP = target === 'light'
-    ? ['dark', 'light', 'dark', 'light', 'dark', 'light', 'dark', 'light']
-    : ['light', 'dark', 'light', 'dark', 'light', 'dark', 'light', 'dark'];
+     Douze battements : sept très rapides et presque transparents, puis
+     cinq qui s'espacent et s'opacifient jusqu'à l'inversion pleine, à un
+     battement par seconde. Le thème final est posé d'emblée ; c'est le
+     voile qui bat par-dessus, ce qui évite de recalculer toute la page à
+     chaque battement. Rien ne se déclenche pour qui a demandé moins
+     d'animations. */
+  var BATTEMENTS = [
+    [50, .10], [50, .12], [55, .14], [55, .16], [60, .18], [65, .20], [75, .24],
+    [170, .34], [310, .50], [490, .66], [730, .84], [1000, 1]
+  ];
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    settle();
-  } else {
-    var i = 0;
-    root.dataset.theme = FLIP[0];
-    marquer();
-    var tick = setInterval(function () {
-      i += 1;
-      if (i >= FLIP.length) { clearInterval(tick); settle(); return; }
-      root.dataset.theme = FLIP[i];
-    }, STEP);
+  var voile = document.getElementById('voile');
+  settle();
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && voile) {
+    var n = 0;
+    (function battre() {
+      if (n >= BATTEMENTS.length) {
+        voile.style.opacity = '0';
+        setTimeout(function () { if (voile.parentNode) voile.parentNode.removeChild(voile); }, 260);
+        return;
+      }
+      var duree = BATTEMENTS[n][0], force = BATTEMENTS[n][1];
+      n += 1;
+      voile.style.transition = 'none';
+      voile.style.opacity = String(force);
+      setTimeout(function () {
+        voile.style.transition = 'opacity ' + Math.round(duree * .34) + 'ms linear';
+        voile.style.opacity = '0';
+      }, Math.round(duree * .34));
+      setTimeout(battre, duree);
+    })();
   }
 
   btn.addEventListener('click', function () {
