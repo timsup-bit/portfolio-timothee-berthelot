@@ -505,6 +505,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --rail: 168px;
 
   color-scheme: light;
+
+  --champ: image-set(url("/media/champ-clair.avif") type("image/avif"), url("/media/champ-clair.webp") type("image/webp"));
+  --champ-fusion: multiply;
+  --champ-force: .42;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -526,6 +530,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     --sig-done: rgba(244, 245, 239, .42);
 
     color-scheme: dark;
+
+    --champ: image-set(url("/media/champ-sombre.avif") type("image/avif"), url("/media/champ-sombre.webp") type("image/webp"));
+    --champ-fusion: screen;
+    --champ-force: .5;
   }
 }
 
@@ -547,6 +555,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --sig-done: rgba(244, 245, 239, .42);
 
   color-scheme: dark;
+
+  --champ: image-set(url("/media/champ-sombre.avif") type("image/avif"), url("/media/champ-sombre.webp") type("image/webp"));
+  --champ-fusion: screen;
+  --champ-force: .5;
 }
 
 .skip {
@@ -957,6 +969,40 @@ p:last-child { margin-bottom: 0; }
 }
 .status[data-s="ok"]   { border-color: color-mix(in srgb, var(--sig-live) 55%, transparent); color: var(--sig-live); }
 .status[data-s="wip"]  { border-color: color-mix(in srgb, var(--sig-wip) 55%, transparent);  color: var(--sig-wip); }
+
+/* ── Texture de la section « sécurité des IA » ────────────────────
+   Un visage reconstitué en points discrets : une représentation, ce
+   dont parle précisément la section. Posée à droite, elle s'efface en
+   dégradé avant d'atteindre la colonne de lecture. Pas d'overflow
+   hidden sur la section : cela casserait le rail en position sticky. */
+
+#axe { position: relative; isolation: isolate; }
+
+#axe::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: min(46%, 560px);
+  background-image: var(--champ);
+  background-size: cover;
+  background-position: 46% 32%;
+  background-repeat: no-repeat;
+  mix-blend-mode: var(--champ-fusion);
+  opacity: var(--champ-force);
+  pointer-events: none;
+  z-index: -1;
+  -webkit-mask-image: radial-gradient(125% 96% at 100% 46%, #000 26%, transparent 76%);
+  mask-image: radial-gradient(125% 96% at 100% 46%, #000 26%, transparent 76%);
+}
+
+@media (max-width: 860px) {
+  #axe::before { width: 100%; opacity: calc(var(--champ-force) * .55); }
+}
+
+/* Qui demande davantage de contraste ne veut pas d'image sous le texte. */
+@media (prefers-contrast: more) {
+  #axe::before { display: none; }
+}
 
 /* ── Pied ─────────────────────────────────────────────────────── */
 
