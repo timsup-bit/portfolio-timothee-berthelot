@@ -658,6 +658,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 }
 .skip:focus { left: 12px; top: 12px; }
 
+/* clip sur la racine aussi : 50vw compte la barre de défilement, la
+   texture pleine largeur dépassait donc de quelques pixels. clip et non
+   hidden, qui casserait les rails en position sticky. */
+html { overflow-x: clip; }
+
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
