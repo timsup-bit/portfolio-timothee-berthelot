@@ -17,7 +17,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <h1 class="nameplate"><span>Timothée</span><span>Collet</span><span class="n3">Berthelot</span></h1>
 
     <div class="standfirst">
-      <p class="role">Développeur logiciel. Spécialisation cybersécurité en cours à Epitech.</p>
+      <p class="role">Je construis des applications. J'apprends maintenant à les casser.</p>
       <dl class="ident">
         <div><dt class="mono">Formation</dt><dd>Epitech — Bachelor, spécialisation cybersécurité</dd></div>
         <div><dt class="mono">En cours</dt><dd>BTS SIO option SLAM &mdash; session 2027</dd></div>
@@ -33,7 +33,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="band row" id="parcours">
     <div class="rail-label mono"><span class="rail-num">01</span><span>Parcours</span></div>
     <div>
-      <h2 class="title">Ce qui commence maintenant</h2>
+      <h2 class="title">Deuxième vie, deuxième année</h2>
       <p class="lede">Septembre 2026&nbsp;: j'entre en deuxième année à Epitech, en spécialisation cybersécurité. Je traite cette date comme un début, pas comme la suite de quelque chose.</p>
       <p>Avant, il y a eu le bâtiment. On y apprend une règle qui ne se théorise pas&nbsp;: une procédure de sécurité négligée ne met pas en danger celui qui la néglige, elle met en danger toute l'équipe. J'ai obtenu ce CAP avec mention, puis j'ai repris mes études en informatique sans cesser de travailler — les marchés, la restauration, les chantiers.</p>
       <p>J'ai préparé un BTS SIO option SLAM au CNED, à distance et en parallèle d'un emploi&nbsp;; je ne l'ai pas obtenu à la session 2026 et je me représente à la session 2027. En parallèle, j'ai construit et livré des applications complètes — iOS natif, web full-stack, IoT — en micro-entreprise et pour des projets académiques.</p>
@@ -83,7 +83,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="band row" id="projets">
     <div class="rail-label mono"><span class="rail-num">02</span><span>Registre</span><span class="rail-num">9 entrées</span></div>
     <div>
-      <h2 class="title">Registre des projets</h2>
+      <h2 class="title">Neuf projets, aucun enjolivé</h2>
       <p class="lede">Six projets menés entre 2024 et 2026, et trois que j'ouvre ensuite autour de l'instrumentation sportive. Chaque entrée précise l'état réel, la pile technique et ce qui est consultable — ou ne l'est pas. Les projets annoncés sont marqués comme tels.</p>
 
       <div class="register">
@@ -252,7 +252,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="band row" id="competences">
     <div class="rail-label mono"><span class="rail-num">03</span><span>Compétences</span></div>
     <div>
-      <h2 class="title">Ce que je sais faire, et où j'en suis</h2>
+      <h2 class="title">Ce que je sais faire. Et ce que je ne sais pas encore.</h2>
       <p class="lede">Déclaré au niveau réel. Ce qui est en cours d'acquisition est indiqué comme tel.</p>
 
       <div class="spec">
@@ -303,7 +303,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="band row" id="experience">
     <div class="rail-label mono"><span class="rail-num">04</span><span>Expérience</span></div>
     <div>
-      <h2 class="title">Parcours professionnel</h2>
+      <h2 class="title">J'ai payé mes études avec mes mains</h2>
       <p class="lede">Cinq années de travail, menées pour partie en parallèle des études. Le bâtiment d'abord, le développement ensuite.</p>
 
       <div class="scroll-x">
@@ -327,7 +327,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="band row" id="formation">
     <div class="rail-label mono"><span class="rail-num">05</span><span>Formation</span></div>
     <div>
-      <h2 class="title">Formation &amp; certifications</h2>
+      <h2 class="title">Ce que j'ai obtenu, et ce que je repasse</h2>
       <p class="lede">Statut exact de chaque ligne. Rien d'annoncé comme acquis qui ne le soit pas.</p>
 
       <div class="scroll-x">
@@ -376,7 +376,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="band row" id="trajectoire">
     <div class="rail-label mono"><span class="rail-num">06</span><span>Trajectoire</span></div>
     <div>
-      <h2 class="title">Feuille de route</h2>
+      <h2 class="title">Ce que je fais d'ici 2028</h2>
       <p class="lede">Un plan daté vaut mieux qu'une déclaration d'intention. Voici le mien, tenu à jour.</p>
 
       <div class="scroll-x">
@@ -405,7 +405,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="band row" id="axe">
     <div class="rail-label mono"><span class="rail-num">07</span><span>Axe de travail</span></div>
     <div>
-      <h2 class="title">Sécurité des systèmes d'intelligence artificielle</h2>
+      <h2 class="title">On ne sécurise pas une IA comme une base de données</h2>
       <p class="lede">Je vise un master en intelligence artificielle. Non pour construire un modèle de plus, mais pour travailler sur ce qui se passe quand on l'attaque.</p>
 
       <p>Un modèle de langage ne distingue pas nettement ses instructions des données qu'on lui donne à lire. Cette frontière absente est une surface d'attaque : un contenu récupéré sur le web, un document déposé par un utilisateur, un message dans une boîte de réception peuvent porter des instructions que le système exécutera comme si elles venaient de son propriétaire. C'est l'injection de prompt indirecte, et elle n'a pas d'équivalent propre dans la sécurité applicative classique — on ne l'échappe pas comme on échappe une requête SQL.</p>
@@ -620,11 +620,12 @@ a { color: inherit; }
 .rail-num { color: var(--ink-38); }
 
 h2.title {
-  font-size: clamp(30px, 4.4vw, 48px);
-  font-weight: 800;
-  letter-spacing: -.028em;
-  line-height: 1.03;
-  margin: 0 0 22px;
+  font-size: clamp(32px, 5vw, 57px);
+  font-weight: 860;
+  letter-spacing: -.034em;
+  line-height: .99;
+  margin: 0 0 24px;
+  max-width: 19ch;
   text-wrap: balance;
 }
 
