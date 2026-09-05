@@ -11,6 +11,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <header class="masthead">
     <div class="masthead-top mono">
       <span>Portfolio — Montreuil, France</span>
+      <span id="moment" class="moment">Heure locale</span>
       <button class="theme-btn" id="theme" type="button" aria-label="Changer de thème">Thème</button>
     </div>
 
@@ -977,6 +978,11 @@ p:last-child { margin-bottom: 0; }
 
 /* ── Bascule de thème ─────────────────────────────────────────── */
 
+.moment {
+  color: var(--ink-38);
+  font-variant-numeric: tabular-nums;
+}
+
 .theme-btn {
   font-family: var(--mono);
   font-size: 11px;
@@ -1007,14 +1013,68 @@ p:last-child { margin-bottom: 0; }
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
+  /* Moment de la journée : il décide du thème par défaut et de la
+     façon dont la page s'ouvre. Un choix manuel le remplace toujours. */
+  function moment() {
+    var h = new Date().getHours();
+    if (h >= 6  && h < 11) return { nom: 'Matin', theme: 'light' };
+    if (h >= 11 && h < 18) return { nom: 'Jour',  theme: 'light' };
+    if (h >= 18 && h < 22) return { nom: 'Soir',  theme: 'dark'  };
+    return { nom: 'Nuit', theme: 'dark' };
+  }
+
+  var m = moment();
+
+  var chosen = null;
   try {
     var saved = localStorage.getItem('tb-theme');
-    if (saved === 'dark' || saved === 'light') root.dataset.theme = saved;
+    if (saved === 'dark' || saved === 'light') chosen = saved;
   } catch (e) {}
+
+  var target = chosen || m.theme;
+
+  var tag = document.getElementById('moment');
+  function marquer() {
+    if (!tag) return;
+    var t = (chosen || target) === 'dark' ? 'thème sombre' : 'thème clair';
+    tag.textContent = m.nom + ' — ' + t;
+  }
+
+  function settle() {
+    root.dataset.theme = target;
+    marquer();
+  }
+
+  /* ── Ouverture ──────────────────────────────────────────────────────
+     Quatre inversions à 170 ms, soit environ 2,9 flashs par seconde :
+     juste sous le seuil de 3 par seconde fixé par la règle WCAG 2.3.1
+     sur les contenus clignotants. Le jour, la page s'ouvre dans le noir
+     et bascule vers le clair ; le soir, l'inverse. Séquence supprimée
+     pour qui a demandé moins d'animations. */
+  var STEP = 170;
+  var FLIP = target === 'light'
+    ? ['dark', 'light', 'dark', 'light']
+    : ['light', 'dark', 'light', 'dark'];
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    settle();
+  } else {
+    var i = 0;
+    root.dataset.theme = FLIP[0];
+    marquer();
+    var tick = setInterval(function () {
+      i += 1;
+      if (i >= FLIP.length) { clearInterval(tick); settle(); return; }
+      root.dataset.theme = FLIP[i];
+    }, STEP);
+  }
 
   btn.addEventListener('click', function () {
     var next = current() === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
+    chosen = next;
+    target = next;
+    marquer();
     try { localStorage.setItem('tb-theme', next); } catch (e) {}
   });
 
