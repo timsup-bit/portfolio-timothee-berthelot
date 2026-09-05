@@ -503,6 +503,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --measure: 63ch;
   --pad: clamp(20px, 5vw, 76px);
   --rail: 168px;
+
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -522,6 +524,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     --sig-live: #6fae8c;
     --sig-wip:  #cfa860;
     --sig-done: rgba(244, 245, 239, .42);
+
+    color-scheme: dark;
   }
 }
 
@@ -541,6 +545,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --sig-live: #6fae8c;
   --sig-wip:  #cfa860;
   --sig-done: rgba(244, 245, 239, .42);
+
+  color-scheme: dark;
 }
 
 .skip {
@@ -1051,10 +1057,15 @@ p:last-child { margin-bottom: 0; }
      sur les contenus clignotants. Le jour, la page s'ouvre dans le noir
      et bascule vers le clair ; le soir, l'inverse. Séquence supprimée
      pour qui a demandé moins d'animations. */
+  /* 170 ms est le pas le plus court admissible : à cette cadence la page
+     produit environ 2,9 flashs par seconde, juste sous le seuil de 3/s
+     de la règle WCAG 2.3.1. Descendre en dessous ferait de cette page un
+     risque avéré pour les personnes photosensibles. On allonge donc la
+     séquence plutôt que de l'accélérer. */
   var STEP = 170;
   var FLIP = target === 'light'
-    ? ['dark', 'light', 'dark', 'light']
-    : ['light', 'dark', 'light', 'dark'];
+    ? ['dark', 'light', 'dark', 'light', 'dark', 'light', 'dark', 'light']
+    : ['light', 'dark', 'light', 'dark', 'light', 'dark', 'light', 'dark'];
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     settle();
