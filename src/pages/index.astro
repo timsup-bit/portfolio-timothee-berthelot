@@ -1228,31 +1228,6 @@ p:last-child { margin-bottom: 0; }
   .masthead::before, .band::before { display: none; }
 }
 
-/* ── Ouverture ────────────────────────────────────────────────────
-   Le bandeau d'en-tête se pose en cascade : chaque bloc monte de huit
-   pixels en 420 ms, décalé de 60 ms sur le précédent. Le contenu est
-   dans le document dès le premier rendu ; seules l'opacité et la
-   translation sont animées, donc le compositeur suffit et rien ne
-   clignote. Sans JavaScript, l'ouverture a lieu quand même. */
-
-@keyframes pose {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: none; }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .masthead-top,
-  .nameplate,
-  .standfirst,
-  .standfirst .ident {
-    animation: pose .42s cubic-bezier(.22, .68, .32, 1) both;
-  }
-
-  .nameplate         { animation-delay: .06s; }
-  .standfirst        { animation-delay: .12s; }
-  .standfirst .ident { animation-delay: .18s; }
-}
-
 /* ── Pied ─────────────────────────────────────────────────────── */
 
 .foot { padding: clamp(46px, 6vw, 82px) 0 clamp(34px, 5vw, 60px); }
