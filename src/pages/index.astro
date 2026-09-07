@@ -3,8 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-<div id="voile" aria-hidden="true"></div>
-
 <a class="skip" href="#parcours">Aller au contenu</a>
 
 <main class="sheet">
@@ -580,7 +578,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --champ-force: .42;
 
   --sig-alerte: #b3402e;
-  --voile: #131311;
   --tex-gain: 1;
 }
 
@@ -609,7 +606,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     --champ-force: .5;
 
     --sig-alerte: #e07a63;
-    --voile: #f4f5ef;
     --tex-gain: 1;
   }
 }
@@ -638,7 +634,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   --champ-force: .5;
 
   --sig-alerte: #e07a63;
-  --voile: #f4f5ef;
   --tex-gain: 1;
 }
 
@@ -1233,20 +1228,29 @@ p:last-child { margin-bottom: 0; }
   .masthead::before, .band::before { display: none; }
 }
 
-/* ── Voile d'ouverture ────────────────────────────────────────────
-   Le rythme et le contraste montent ensemble : départ très rapide en
-   micro-contraste, puis les battements s'espacent pendant que le voile
-   s'opacifie, jusqu'à l'inversion pleine à un battement par seconde.
-   Le passage rapide reste sous le seuil de luminance des contenus
-   clignotants ; l'inversion pleine n'arrive qu'au rythme le plus lent. */
+/* ── Ouverture ────────────────────────────────────────────────────
+   Le bandeau d'en-tête se pose en cascade : chaque bloc monte de huit
+   pixels en 420 ms, décalé de 60 ms sur le précédent. Le contenu est
+   dans le document dès le premier rendu ; seules l'opacité et la
+   translation sont animées, donc le compositeur suffit et rien ne
+   clignote. Sans JavaScript, l'ouverture a lieu quand même. */
 
-#voile {
-  position: fixed;
-  inset: 0;
-  background: var(--voile);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 90;
+@keyframes pose {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .masthead-top,
+  .nameplate,
+  .standfirst,
+  .standfirst .ident {
+    animation: pose .42s cubic-bezier(.22, .68, .32, 1) both;
+  }
+
+  .nameplate         { animation-delay: .06s; }
+  .standfirst        { animation-delay: .12s; }
+  .standfirst .ident { animation-delay: .18s; }
 }
 
 /* ── Pied ─────────────────────────────────────────────────────── */
@@ -1384,40 +1388,7 @@ p:last-child { margin-bottom: 0; }
     marquer();
   }
 
-  /* ── Ouverture ──────────────────────────────────────────────────────
-     Douze battements : sept très rapides et presque transparents, puis
-     cinq qui s'espacent et s'opacifient jusqu'à l'inversion pleine, à un
-     battement par seconde. Le thème final est posé d'emblée ; c'est le
-     voile qui bat par-dessus, ce qui évite de recalculer toute la page à
-     chaque battement. Rien ne se déclenche pour qui a demandé moins
-     d'animations. */
-  var BATTEMENTS = [
-    [50, .10], [50, .12], [55, .14], [55, .16], [60, .18], [65, .20], [75, .24],
-    [170, .34], [310, .50], [490, .66], [730, .84], [1000, 1]
-  ];
-
-  var voile = document.getElementById('voile');
   settle();
-
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && voile) {
-    var n = 0;
-    (function battre() {
-      if (n >= BATTEMENTS.length) {
-        voile.style.opacity = '0';
-        setTimeout(function () { if (voile.parentNode) voile.parentNode.removeChild(voile); }, 260);
-        return;
-      }
-      var duree = BATTEMENTS[n][0], force = BATTEMENTS[n][1];
-      n += 1;
-      voile.style.transition = 'none';
-      voile.style.opacity = String(force);
-      setTimeout(function () {
-        voile.style.transition = 'opacity ' + Math.round(duree * .34) + 'ms linear';
-        voile.style.opacity = '0';
-      }, Math.round(duree * .34));
-      setTimeout(battre, duree);
-    })();
-  }
 
   btn.addEventListener('click', function () {
     var next = current() === 'dark' ? 'light' : 'dark';
