@@ -1278,41 +1278,12 @@ p:last-child { margin-bottom: 0; }
   .theme-btn { padding: 10px 15px; }
 }
 
-/* ── Fluidité ─────────────────────────────────────────────────────
-   Dérive des textures pilotée par le défilement : l'animation est portée
-   par le compositeur, sans JavaScript et sans calcul à chaque image. Les
-   navigateurs qui ne la connaissent pas affichent la texture immobile. */
+/* ── Défilement ───────────────────────────────────────────────────
+   Le défilement fluide reste : il porte les liens d'ancre, pas une
+   animation de contenu. Les textures de fond sont immobiles. */
 
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .masthead::before, .band::before {
-      animation: derive linear both;
-      animation-timeline: view();
-      animation-range: entry 0% exit 100%;
-      will-change: transform;
-    }
-  }
-}
-
-@keyframes derive {
-  from { transform: translate3d(0, -7%, 0) scale(1.16); }
-  to   { transform: translate3d(0, 7%, 0)  scale(1.16); }
-}
-
-/* Le contenu d'une entrée du registre se déplie au lieu d'apparaître sec. */
-@media (prefers-reduced-motion: no-preference) {
-  .entry[open] .entry-inner {
-    animation: deplie .36s cubic-bezier(.2, .72, .28, 1) both;
-  }
-}
-
-@keyframes deplie {
-  from { opacity: 0; transform: translateY(-7px); }
-  to   { opacity: 1; transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
