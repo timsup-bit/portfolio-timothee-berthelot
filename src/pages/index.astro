@@ -507,6 +507,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
+  <!-- ══ CV ═════════════════════════════════════════════════════ -->
+  <section class="band row" id="cv">
+    <div class="rail-label mono"><span class="rail-num">08</span><span>CV</span></div>
+    <div>
+      <h2 class="title">Mon CV</h2>
+      <p class="lede">Téléchargez-le directement, ou scannez le code pour l&rsquo;avoir sur votre téléphone.</p>
+
+      <div class="cv-grid">
+        <div class="cv-card">
+          <div class="cv-card-head">
+            <span class="mono cv-lang">Français</span>
+            <a class="cv-dl" href="/cv/timothee-collet-berthelot-cv-fr.pdf" download>Télécharger &darr;</a>
+          </div>
+          <img class="cv-qr" src="/cv/qr-cv-fr.svg" alt="QR code vers le CV en français" width="128" height="128" loading="lazy">
+        </div>
+
+        <div class="cv-card">
+          <div class="cv-card-head">
+            <span class="mono cv-lang">English</span>
+            <a class="cv-dl" href="/cv/timothee-collet-berthelot-cv-en.pdf" download>Download &darr;</a>
+          </div>
+          <img class="cv-qr" src="/cv/qr-cv-en.svg" alt="QR code to the English CV" width="128" height="128" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ Contact ════════════════════════════════════════════════ -->
   <footer class="band foot" id="contact">
     <div class="foot-grid">
@@ -990,6 +1017,49 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: .07em;
   text-transform: uppercase;
   color: var(--ink-38);
+}
+
+/* ── CV : téléchargement et QR ────────────────────────────────── */
+
+.cv-grid {
+  margin-top: clamp(8px, 1vw, 12px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 28px);
+}
+@media (max-width: 720px) { .cv-grid { grid-template-columns: minmax(0, 1fr); } }
+
+.cv-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px;
+  border: 1px solid var(--rule);
+}
+
+.cv-card-head { display: grid; gap: 11px; }
+.cv-lang { color: var(--ink-38); }
+.cv-dl {
+  font-size: clamp(19px, 2vw, 23px);
+  font-weight: 620;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  width: fit-content;
+  transition: border-color .16s ease;
+}
+.cv-dl:hover { border-color: var(--ink); }
+
+.cv-qr {
+  width: 88px;
+  height: 88px;
+  background: #fff;
+  padding: 6px;
+  border: 1px solid var(--rule);
+  flex: none;
 }
 
 /* ── Spécification des compétences ────────────────────────────── */
