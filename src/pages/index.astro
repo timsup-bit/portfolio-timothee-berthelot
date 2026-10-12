@@ -62,7 +62,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <ul class="tryp-list">
             <li>Epitech — Bachelor 2, spécialisation cybersécurité</li>
             <li>BTS SIO présenté à la session 2027</li>
-            <li>Micro-entreprise créée, premières missions à venir</li>
+            <li>Micro-entreprise active : développement en freelance et cours d'informatique</li>
             <li>Laboratoire personnel en construction</li>
           </ul>
         </div>
@@ -507,9 +507,41 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
+  <!-- ══ En plus ════════════════════════════════════════════════ -->
+  <section class="band row" id="enplus">
+    <div class="rail-label mono"><span class="rail-num">08</span><span>En plus</span></div>
+    <div>
+      <h2 class="title">Ce que je fais en plus</h2>
+      <p class="lede">À côté de mes études, j'ai deux activités&nbsp;: je développe des applications en freelance, et je propose des cours d'informatique aux plus jeunes.</p>
+
+      <div class="spec">
+        <div class="spec-block">
+          <h3>Développement en freelance</h3>
+          <div>
+            <span class="state mono" data-s="live"><span class="dot"></span>En activité</span>
+            <p>Je conçois, développe et mets en production des applications, en iOS natif ou en web full-stack. Je travaille en micro-entreprise et mes prestations sont facturées.</p>
+            <p>Mes réalisations sont dans le <a href="#projets">registre des projets</a>&nbsp;: par exemple Affûteurs à Vélo, un site livré à une association, et Trouvaille, une application mise en production.</p>
+            <div class="tags"><span class="tag">iOS natif</span><span class="tag">Web full-stack</span><span class="tag">API REST</span><span class="tag">Mise en production</span></div>
+            <div class="links"><a href="mailto:timotheeberthelot1@gmail.com?subject=Mission%20de%20d%C3%A9veloppement">Proposer une mission ↗</a></div>
+          </div>
+        </div>
+
+        <div class="spec-block">
+          <h3>Cours d'informatique</h3>
+          <div>
+            <span class="state mono" data-s="live"><span class="dot"></span>Disponible</span>
+            <p>Je propose des cours d'informatique aux plus petits. J'explique simplement, en tenant compte de l'âge et du niveau de chaque enfant.</p>
+            <div class="tags"><span class="tag">Enfants</span><span class="tag">Informatique</span><span class="tag">Pédagogie</span></div>
+            <div class="links"><a href="mailto:timotheeberthelot1@gmail.com?subject=Cours%20d%27informatique">Demander un cours ↗</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ CV ═════════════════════════════════════════════════════ -->
   <section class="band row" id="cv">
-    <div class="rail-label mono"><span class="rail-num">08</span><span>CV</span></div>
+    <div class="rail-label mono"><span class="rail-num">09</span><span>CV</span></div>
     <div>
       <h2 class="title">Mon CV</h2>
       <p class="lede">Téléchargez-le directement, ou scannez le code pour l&rsquo;avoir sur votre téléphone.</p>
@@ -558,7 +590,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="colophon mono">
       <span>Timothée Collet Berthelot — Portfolio</span>
       <span>Geist &amp; Geist Mono</span>
-      <span>Mise à jour : septembre 2026</span>
+      <span>Mise à jour : octobre 2026</span>
     </div>
   </footer>
 
@@ -1082,6 +1114,15 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: -.008em;
 }
 .spec-block p { margin: 0 0 12px; font-size: 15.5px; color: var(--ink-70); max-width: 58ch; }
+.spec-block .state { margin-bottom: 12px; }
+.spec-block .tags + .links { margin-top: 16px; }
+.spec-block p a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: border-color .16s ease;
+}
+.spec-block p a:hover { border-color: var(--ink); }
 
 /* ── Formation, feuille de route ──────────────────────────────── */
 
@@ -1263,6 +1304,14 @@ p:last-child { margin-bottom: 0; }
   --tex-force: .56;
   --tex-cadre: 46% 32%;
   --tex-masque: radial-gradient(128% 140% at 94% 48%, #000 34%, transparent 92%);
+}
+
+#enplus {
+  --tex-clair: image-set(url("/media/enplus-clair.avif") type("image/avif"), url("/media/enplus-clair.webp") type("image/webp"));
+  --tex-sombre: image-set(url("/media/enplus-sombre.avif") type("image/avif"), url("/media/enplus-sombre.webp") type("image/webp"));
+  --tex-force: .5;
+  --tex-cadre: 50% 50%;
+  --tex-masque: radial-gradient(110% 150% at 86% 52%, #000 30%, transparent 88%);
 }
 
 .foot {
