@@ -84,10 +84,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <!-- ══ Registre des projets ═══════════════════════════════════ -->
   <section class="band row" id="projets">
-    <div class="rail-label mono"><span class="rail-num">02</span><span>Registre</span><span class="rail-num">10 entrées</span></div>
+    <div class="rail-label mono"><span class="rail-num">02</span><span>Registre</span><span class="rail-num">13 entrées</span></div>
     <div>
       <h2 class="title">Mes projets</h2>
-      <p class="lede">Sept projets réalisés entre 2024 et 2026, et trois que je vais commencer. Pour chacun&nbsp;: l'état d'avancement, les technologies utilisées et le lien quand il est public.</p>
+      <p class="lede">Dix projets réalisés entre 2024 et 2026, et trois que je vais commencer. Pour chacun&nbsp;: l'état d'avancement, les technologies utilisées et le lien quand il est public.</p>
 
       <div class="register">
 
@@ -217,6 +217,57 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <details class="entry">
           <summary class="entry-head">
             <span class="entry-num mono">08</span>
+            <span class="entry-name">Crash Radar AI</span>
+            <span class="state mono" data-s="done"><span class="dot"></span>Prototype</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Tableau de bord qui calcule un score de risque de marché de 0 à 100 à partir de six familles d'indicateurs&nbsp;: actions, crédit, volatilité, liquidité, macro et sentiment. API en FastAPI, interface en Streamlit, lancement avec Docker. Les données de marché sont simulées&nbsp;: ce n'est pas un outil branché sur les marchés réels.</p>
+              <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">scikit-learn</span><span class="tag">Streamlit</span><span class="tag">Docker</span></div>
+              <div class="links"><a href="https://github.com/timsup-bit/DASH-CRASH" target="_blank" rel="noopener noreferrer">Dépôt GitHub ↗</a></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">09</span>
+            <span class="entry-name">Application immobilière</span>
+            <span class="state mono" data-s="done"><span class="dot"></span>Prototype</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Gestion d'annonces immobilières&nbsp;: liste avec filtres, fiche détaillée, création, modification et suppression. API en Fastify, avec validation des données par Zod, et interface en React et TypeScript. Les annonces sont gardées en mémoire, sans base de données.</p>
+              <div class="tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Fastify</span><span class="tag">Zod</span><span class="tag">API REST</span></div>
+              <div class="links"><a href="https://github.com/timsup-bit/CFP-GROUPE" target="_blank" rel="noopener noreferrer">Dépôt GitHub ↗</a></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">10</span>
+            <span class="entry-name">BNV</span>
+            <span class="state mono" data-s="done"><span class="dot"></span>Maquette</span>
+            <span class="chev" aria-hidden="true">+</span>
+          </summary>
+          <div class="entry-body">
+            <div class="spacer"></div>
+            <div class="entry-inner">
+              <p>Interface web d'une carte pour le bénévolat (Benevolat Map)&nbsp;: points d'intérêt filtrables, liste de monuments, fiche de chaque lieu et mode itinéraire entre deux points. Le travail porte sur l'interface seule, sur une carte illustrée&nbsp;: il n'y a ni serveur ni données réelles.</p>
+              <div class="tags"><span class="tag">Vue 3</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span></div>
+              <div class="links"><a href="https://github.com/timsup-bit/BNV" target="_blank" rel="noopener noreferrer">Dépôt GitHub ↗</a></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="entry">
+          <summary class="entry-head">
+            <span class="entry-num mono">11</span>
             <span class="entry-name">Compteur vélo</span>
             <span class="state mono" data-s="plan"><span class="dot"></span>Planifié</span>
             <span class="chev" aria-hidden="true">+</span>
@@ -233,7 +284,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <details class="entry">
           <summary class="entry-head">
-            <span class="entry-num mono">09</span>
+            <span class="entry-num mono">12</span>
             <span class="entry-name">Suivi de natation</span>
             <span class="state mono" data-s="plan"><span class="dot"></span>Planifié</span>
             <span class="chev" aria-hidden="true">+</span>
@@ -250,7 +301,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <details class="entry">
           <summary class="entry-head">
-            <span class="entry-num mono">10</span>
+            <span class="entry-num mono">13</span>
             <span class="entry-name">Analyse de foulée</span>
             <span class="state mono" data-s="plan"><span class="dot"></span>Planifié</span>
             <span class="chev" aria-hidden="true">+</span>
@@ -289,7 +340,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <h3>Web &amp; backend</h3>
           <div>
             <p>Applications full-stack et API REST : modélisation, endpoints, authentification, mise en production.</p>
-            <div class="tags"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">PHP</span><span class="tag">HTML / CSS</span></div>
+            <div class="tags"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">Vue</span><span class="tag">PHP</span><span class="tag">HTML / CSS</span></div>
           </div>
         </div>
 
