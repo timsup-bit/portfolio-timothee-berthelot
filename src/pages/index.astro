@@ -1153,6 +1153,11 @@ p:last-child { margin-bottom: 0; }
 .plaque { margin: 24px 0 0; max-width: 58ch; }
 .plaque img { display: block; width: 100%; height: auto; background: #000; border: 1px solid var(--rule); }
 .plaque figcaption { margin-top: 10px; color: var(--ink-38); }
+/* Visible uniquement sur le thème clair. */
+:root[data-theme="dark"] .plaque { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .plaque { display: none; }
+}
 
 /* ── Formation, feuille de route ──────────────────────────────── */
 
