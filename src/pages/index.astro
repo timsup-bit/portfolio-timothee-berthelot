@@ -314,6 +314,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div>
             <p>En cours de formation. Spécialisation engagée à Epitech depuis la rentrée 2026 ; pratique offensive et défensive en construction, documentée au fil de son acquisition. Je préfère l'annoncer ainsi plutôt que de revendiquer un niveau que je n'ai pas encore.</p>
             <div class="tags"><span class="tag">En formation</span><span class="tag">Sécurité applicative</span><span class="tag">Réseaux</span></div>
+            <figure class="plaque">
+              <picture>
+                <source srcset="/media/kali-dragon.avif" type="image/avif">
+                <img src="/media/kali-dragon.webp" alt="Dragon stylisé blanc sur fond noir, emblème de Kali Linux" width="900" height="675" loading="lazy" decoding="async">
+              </picture>
+              <figcaption class="mono">Kali Linux</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -1141,6 +1148,11 @@ p:last-child { margin-bottom: 0; }
   transition: border-color .16s ease;
 }
 .spec-block p a:hover { border-color: var(--ink); }
+
+/* ── Plaque illustrée (emblème Kali Linux) ────────────────────── */
+.plaque { margin: 24px 0 0; max-width: 58ch; }
+.plaque img { display: block; width: 100%; height: auto; background: #000; border: 1px solid var(--rule); }
+.plaque figcaption { margin-top: 10px; color: var(--ink-38); }
 
 /* ── Formation, feuille de route ──────────────────────────────── */
 
