@@ -315,10 +315,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <p>En cours de formation. Spécialisation engagée à Epitech depuis la rentrée 2026 ; pratique offensive et défensive en construction, documentée au fil de son acquisition. Je préfère l'annoncer ainsi plutôt que de revendiquer un niveau que je n'ai pas encore.</p>
             <div class="tags"><span class="tag">En formation</span><span class="tag">Sécurité applicative</span><span class="tag">Réseaux</span></div>
             <figure class="plaque">
-              <picture>
-                <source srcset="/media/kali-dragon.avif" type="image/avif">
-                <img src="/media/kali-dragon.webp" alt="Dragon stylisé blanc sur fond noir, emblème de Kali Linux" width="900" height="675" loading="lazy" decoding="async">
-              </picture>
+              <div class="plaque-cadre">
+                <picture>
+                  <source srcset="/media/kali-dragon.avif" type="image/avif">
+                  <img src="/media/kali-dragon.webp" alt="Dragon stylisé blanc sur fond noir, emblème de Kali Linux" width="900" height="675" loading="lazy" decoding="async">
+                </picture>
+              </div>
               <figcaption class="mono">Kali Linux</figcaption>
             </figure>
           </div>
@@ -1151,7 +1153,8 @@ p:last-child { margin-bottom: 0; }
 
 /* ── Plaque illustrée (emblème Kali Linux) ────────────────────── */
 .plaque { margin: 24px 0 0; max-width: 58ch; }
-.plaque img { display: block; width: 100%; height: auto; background: #000; border: 1px solid var(--rule); }
+.plaque-cadre { position: relative; overflow: hidden; background: #000; border: 1px solid var(--rule); }
+.plaque img { display: block; width: 100%; height: auto; }
 .plaque figcaption { margin-top: 10px; color: var(--ink-38); }
 /* Visible uniquement sur le thème clair. */
 :root[data-theme="dark"] .plaque { display: none; }
@@ -1432,9 +1435,137 @@ p:last-child { margin-bottom: 0; }
   .theme-btn { padding: 10px 15px; }
 }
 
+/* ── Mouvement ────────────────────────────────────────────────────
+   Immersion portée par le défilement. Aucune animation ne clignote :
+   seuls l'opacité, la translation et l'échelle varient, lentement, et
+   uniquement par le compositeur. Les animations pilotées par le
+   défilement (animation-timeline) sont un plus : un navigateur qui ne
+   les connaît pas affiche la page complète et immobile. Le réglage
+   « réduire les animations » du visiteur coupe tout, voir en bas. */
+
+@keyframes derive {
+  from { transform: translate3d(0, -8%, 0) scale(1.2); }
+  to   { transform: translate3d(0, 8%, 0)  scale(1.2); }
+}
+
+@keyframes leve {
+  0%   { opacity: 0; transform: translate3d(0, 52px, 0); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes fuit {
+  to { transform: translate3d(var(--dx, 0), 0, 0); opacity: .18; }
+}
+
+@keyframes monte {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes trace {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes zoom-lent {
+  from { transform: scale(1.2); }
+  to   { transform: scale(1); }
+}
+
+@keyframes lueur {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: .7; }
+}
+
+/* Dépliage d'un projet : la hauteur s'ouvre, puis le contenu monte en
+   cascade. Là où ::details-content n'existe pas, l'entrée s'ouvre sec. */
+@media (prefers-reduced-motion: no-preference) {
+  .entry[open] .entry-inner > * { animation: monte .5s cubic-bezier(.2, .72, .28, 1) both; }
+  .entry[open] .entry-inner > :nth-child(2) { animation-delay: .07s; }
+  .entry[open] .entry-inner > :nth-child(3) { animation-delay: .14s; }
+  .entry[open] .entry-inner > :nth-child(4) { animation-delay: .21s; }
+  .entry[open] .entry-inner > :nth-child(5) { animation-delay: .28s; }
+}
+
+@supports selector(::details-content) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root { interpolate-size: allow-keywords; }
+    .entry::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition: block-size .5s cubic-bezier(.2, .72, .28, 1), content-visibility .5s allow-discrete;
+    }
+    .entry[open]::details-content { block-size: auto; }
+  }
+}
+
+/* Lueur lente dans l'œil du dragon : un battement toutes les huit
+   secondes, très en dessous du seuil des contenus clignotants. */
+.plaque-cadre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 8% 11% at 70.5% 40%, rgba(255, 70, 60, .7), transparent 78%);
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .plaque-cadre::after { animation: lueur 8s ease-in-out infinite; }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Profondeur : les textures de fond dérivent à une autre vitesse que le texte. */
+    .masthead::before, .band::before {
+      animation: derive linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+      will-change: transform;
+    }
+
+    /* Le nom se disloque au départ : une ligne par côté, en s'estompant. */
+    .nameplate span {
+      animation: fuit linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0px 90vh;
+      will-change: transform, opacity;
+    }
+    .nameplate span:nth-child(1) { --dx: -18vw; }
+    .nameplate span:nth-child(2) { --dx: 14vw; }
+    .nameplate span:nth-child(3) { --dx: -10vw; }
+
+    /* Chaque bloc se lève en entrant à l'écran. Les tableaux défilants
+       sont animés en bloc, pas ligne par ligne : leur propre zone de
+       défilement fausserait le calcul. */
+    .band > div > h2.title,
+    .band > div > p,
+    .register > .entry,
+    .spec-block,
+    .tryp-col,
+    .scroll-x,
+    .schema,
+    .cv-card,
+    .foot-col {
+      animation: leve linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 20%;
+    }
+    .tryp-col:nth-child(2) { animation-range: entry 6% cover 24%; }
+    .tryp-col:nth-child(3) { animation-range: entry 12% cover 28%; }
+
+    /* Le dragon se trace de gauche à droite en entrant, en se resserrant. */
+    .plaque-cadre img {
+      animation: trace linear both, zoom-lent linear both;
+      animation-timeline: view(), view();
+      animation-range: entry 8% cover 40%, entry 0% cover 62%;
+    }
+  }
+}
+
 /* ── Défilement ───────────────────────────────────────────────────
-   Le défilement fluide reste : il porte les liens d'ancre, pas une
-   animation de contenu. Les textures de fond sont immobiles. */
+   Le défilement fluide porte les liens d'ancre. */
 
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
